@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+body {
+	background-color: black;
+	color: white;
+	font-family: 'VT323', monospace;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+h1,
+h2,
+h3 {
+	font-size: 100px;
+	margin: 0;
+	padding: 0;
+}
+
+h4,
+h5,
+h6 {
+	font-size: 60px;
+	margin: 0;
+	padding: 0;
+}

@@ -1,0 +1,57 @@
+@mixin track() {
+	background-color: white;
+	height: 10px;
+	-webkit-appearance: none;
+}
+
+@mixin thumb {
+	width: 10px;
+	height: 20px;
+	cursor: ew-resize;
+	background: #0042ff;
+	-webkit-appearance: none;
+}
+
+@mixin thumb-disabled {
+	background: grey;
+	cursor: not-allowed;
+}
+
+input[type='range'] {
+	width: 170px;
+	overflow: hidden;
+	-webkit-appearance: none;
+	background-color: white;
+	outline: none;
+	border-radius: 1em;
+
+	&::-webkit-slider-runnable-track {
+		@include track;
+	}
+	&::-moz-range-progress {
+		@include track;
+	}
+	&::-ms-track {
+		@include track;
+	}
+
+	&::-webkit-slider-thumb {
+		@include thumb;
+	}
+	&::-moz-range-thumb {
+		@include thumb;
+	}
+	&:disabled::-webkit-slider-thumb {
+		@include thumb-disabled;
+	}
+	&:disabled::-moz-range-thumb {
+		@include thumb-disabled;
+	}
+	:focus {
+		outline: none;
+	}
+}
+
+.slider-data {
+	font-size: 26px;
+}

@@ -1,0 +1,42 @@
+.main-page-container {
+	margin-left: auto;
+	margin-right: auto;
+
+	.text-container {
+		margin: 10px 20px;
+
+		.text {
+			font-size: 26px;
+		}
+
+		.text-link {
+			color: #c7c7c7;
+			text-decoration: none;
+
+			&:hover {
+				color: red;
+			}
+		}
+
+		.important-text {
+			color: red;
+		}
+
+		.livestream-link {
+			font-size: 30px;
+
+			&:hover {
+				color: red;
+			}
+		}
+	}
+
+	.embedded-player {
+		width: 320px;
+		height: 180px;
+	}
+}
+
+.padding {
+	margin-top: 30px;
+}

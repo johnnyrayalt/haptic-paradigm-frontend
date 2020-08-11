@@ -1,0 +1,35 @@
+.text-page {
+	cursor: text;
+	margin: 0 10%;
+	color: lime;
+
+	.off {
+		display: none;
+	}
+
+	.text-header,
+	.text-text-container {
+		margin: 5%;
+	}
+
+	.text-text-container {
+		font-size: 24px;
+
+		.text-text {
+			line-height: 1.2em;
+		}
+
+		.important-text {
+			color: red;
+		}
+
+		.text-link {
+			color: #c7c7c7;
+			text-decoration: none;
+
+			&:hover {
+				color: red;
+			}
+		}
+	}
+}
