@@ -7,4 +7,4 @@ KNOWN BUGS:
 -   If the frequency slider is moved but the amplitude slider is not touched for the entire duration, the amplitude slider will revert to default state for the client who just had control.
 
 docker build -t chloealxandra/esfrontend .
-docker run -p 80:8000/tcp chloealxandra/esfrontend
+docker run -p 8080:5000 -p 8002:8002 chloealxandra/esfrontend
