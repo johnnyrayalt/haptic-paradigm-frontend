@@ -47,7 +47,8 @@
         "redux-logger": "3.0.6"
     },
     "scripts": {
-        "build": "REACT_APP_PORT=8000 REACT_APP_URL=http://localhost:8000/ react-scripts build",
+        "build": "react-scripts build",
+        "build:prod": "REACT_APP_PORT=8000 REACT_APP_URL=http://localhost/ react-scripts build",
         "postinstall": "rimraf build && npm run build",
         "start": "react-scripts start",
         "test": "react-scripts test",
