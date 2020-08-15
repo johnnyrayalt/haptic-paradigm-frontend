@@ -48,7 +48,7 @@
     },
     "scripts": {
         "build": "react-scripts build",
-        "build:prod": "REACT_APP_PORT=8000 REACT_APP_URL=http://localhost/ react-scripts build",
+        "build:prod": "REACT_APP_PORT=8002 REACT_APP_URL=http://localhost:8002/ react-scripts build",
         "postinstall": "rimraf build && npm run build",
         "start": "react-scripts start",
         "test": "react-scripts test",

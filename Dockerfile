@@ -15,4 +15,5 @@ RUN npm run postinstall
 RUN yarn global add serve
 
 EXPOSE 5000
+EXPOSE 8002
 CMD ["serve", "-s", "build"]
