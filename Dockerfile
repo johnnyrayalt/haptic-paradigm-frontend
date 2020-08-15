@@ -9,7 +9,10 @@ COPY package*.json /usr/src/app/
 RUN npm install
 
 # Bundle app source
-COPY . /usr/src/app
+COPY . .
+RUN npm run build
+RUN npm run postinstall
+RUN yarn global add serve
 
-EXPOSE 8000
-CMD [ "npm", "start" ]
+EXPOSE 5000
+CMD ["serve", "-s", "build"]
