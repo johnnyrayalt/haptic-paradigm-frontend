@@ -1,8 +1,9 @@
 import { createAction } from 'redux-act';
 
-export const actions = {
-	UPDATE_VALUE_FREQUENCY: 'UPDATE_VALUE_FREQUENCY',
-	UPDATE_VALUE_AMPLITUDE: 'UPDATE_VALUE_AMPLITUDE',
+export const actions: { [name: string]: string } = {
+	UPDATE_VALUE_SLIDER_X: 'UPDATE_VALUE_SLIDER_X',
+	UPDATE_VALUE_SLIDER_Y: 'UPDATE_VALUE_SLIDER_Y',
+	UPDATE_VALUE_SLIDER_Z: 'UPDATE_VALUE_SLIDER_Z',
 	UPDATE_OSC_VALUE: 'UPDATE_OSC_VALUE',
 	UPDATE_FROM_UI: 'UPDATE_FROM_UI',
 	UPDATE_FROM_SOCKET: 'UPDATE_FROM_SOCKET',
@@ -50,19 +51,17 @@ export const disconnectFromServer = createAction(actions.DISCONNECT_FROM_SERVER,
 	message,
 }));
 
-export const setFrequencySliderValue = createAction(
-	actions.UPDATE_VALUE_FREQUENCY,
-	(value: number) => ({
-		value,
-	}),
-);
+export const setSliderXValue = createAction(actions.UPDATE_VALUE_SLIDER_X, (value: number) => ({
+	value,
+}));
 
-export const setAmplitudeSliderValue = createAction(
-	actions.UPDATE_VALUE_AMPLITUDE,
-	(value: number) => ({
-		value,
-	}),
-);
+export const setSliderYValue = createAction(actions.UPDATE_VALUE_SLIDER_Y, (value: number) => ({
+	value,
+}));
+
+export const setSliderZValue = createAction(actions.UPDATE_VALUE_SLIDER_Z, (value: number) => ({
+	value,
+}));
 
 export const getCurrentOscMessage = createAction(
 	actions.UPDATE_OSC_VALUE,

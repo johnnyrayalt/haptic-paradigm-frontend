@@ -20,6 +20,12 @@ function connect() {
 	});
 }
 
+function determineActionType(type) {
+	const action = actions[`UPDATE_VALUE_SLIDER_${type.toUpperCase()}`];
+
+	return action;
+}
+
 function subscribeToSocket(socket) {
 	return eventChannel((emitter) => {
 		socket.on('controlling', (payload) => {
@@ -29,10 +35,7 @@ function subscribeToSocket(socket) {
 			emitter(updateIsControlling(true));
 
 			payload.forEach((message) => {
-				const actionType =
-					message.address === '/slider/frequency'
-						? actions.UPDATE_VALUE_FREQUENCY
-						: actions.UPDATE_VALUE_AMPLITUDE;
+				const actionType = determineActionType(message.args[0].type);
 
 				const messageToUpdate = {
 					address: message.address,
@@ -45,10 +48,7 @@ function subscribeToSocket(socket) {
 
 		socket.on('initialState', async (payload) => {
 			await payload.forEach((message) => {
-				const actionType =
-					message.address === '/slider/frequency'
-						? actions.UPDATE_VALUE_FREQUENCY
-						: actions.UPDATE_VALUE_AMPLITUDE;
+				const actionType = determineActionType(message.args[0].type);
 
 				const messageToUpdate = {
 					address: message.address,
@@ -60,10 +60,7 @@ function subscribeToSocket(socket) {
 		});
 
 		socket.on('broadcastMessage', (payload) => {
-			const actionType =
-				payload.address === '/slider/frequency'
-					? actions.UPDATE_VALUE_FREQUENCY
-					: actions.UPDATE_VALUE_AMPLITUDE;
+			const actionType = determineActionType(payload.args[0].type);
 
 			emitter(updateFromSocketHandler(actionType, payload));
 		});

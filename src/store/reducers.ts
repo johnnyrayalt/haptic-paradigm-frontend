@@ -1,29 +1,25 @@
+import { SLIDER } from './../resources/constants';
 import {
-	setFrequencySliderValue,
-	setAmplitudeSliderValue,
+	setSliderXValue,
+	setSliderYValue,
+	setSliderZValue,
 	getCurrentOscMessage,
 	updateIsControlling,
 } from './actions';
 import { createReducer } from 'redux-act';
-import { CONSTANTS } from 'resources/constants';
 import { combineReducers } from 'redux';
 
 const initial: any = {
 	messages: {
-		message: {
-			address: CONSTANTS.FREQUENCY_SLIDER,
-			args: [
-				{
-					type: 'f',
-					value: 50,
-				},
-			],
-		},
+		message: SLIDER('x', 50),
 	},
-	freqSlider: {
+	sliderX: {
 		value: 50,
 	},
-	ampSlider: {
+	sliderY: {
+		value: 50,
+	},
+	sliderZ: {
 		value: 50,
 	},
 	isControlling: false,
@@ -39,24 +35,34 @@ export const isControlling = createReducer(
 	initial.isControlling,
 );
 
-export const frequencySlider = createReducer(
+export const sliderX = createReducer(
 	{
-		[setFrequencySliderValue as any]: (state: any, payload: any) => ({
+		[setSliderXValue as any]: (state: any, payload: any) => ({
 			...state,
 			value: payload.args[0].value,
 		}),
 	},
-	initial.freqSlider,
+	initial.sliderX,
 );
 
-export const amplitudeSlider = createReducer(
+export const sliderY = createReducer(
 	{
-		[setAmplitudeSliderValue as any]: (state: any, payload: any) => ({
+		[setSliderYValue as any]: (state: any, payload: any) => ({
 			...state,
 			value: payload.args[0].value,
 		}),
 	},
-	initial.ampSlider,
+	initial.sliderY,
+);
+
+export const sliderZ = createReducer(
+	{
+		[setSliderZValue as any]: (state: any, payload: any) => ({
+			...state,
+			value: payload.args[0].value,
+		}),
+	},
+	initial.sliderZ,
 );
 
 export const currentOscMessage = createReducer(
@@ -70,8 +76,9 @@ export const currentOscMessage = createReducer(
 );
 
 export default combineReducers({
-	frequencySlider,
-	amplitudeSlider,
+	sliderX,
+	sliderY,
+	sliderZ,
 	currentOscMessage,
 	isControlling,
 });
