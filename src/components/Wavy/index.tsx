@@ -2,10 +2,15 @@ import React from 'react';
 import './wavyStyles.scss';
 
 const Wavy = (props: any) => {
-	let { amp, freq } = props;
+	const { axis, value } = props;
 
-	if (!amp) amp = 40;
-	if (!freq) freq = 20;
+	let amp: number = 0;
+	let freq: number = 0;
+	let size: number = 0;
+
+	axis !== 'x' ? (amp = 40) : (amp = value);
+	axis !== 'y' ? (freq = 20) : (freq = value);
+	axis !== 'z' ? (size = 50) : (size = value);
 
 	const sine = (): string => {
 		let xs: any = [];
