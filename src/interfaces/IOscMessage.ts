@@ -2,7 +2,7 @@ export interface OscMessage {
 	address: string;
 	args: [
 		{
-			type: 'f' | 'a';
+			type: string;
 			value: number;
 		},
 	];
