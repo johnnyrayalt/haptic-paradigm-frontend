@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { CONSTANTS } from 'resources/constants';
+import { SLIDER_MAX, SLIDER_MIN, SLIDER_STEP, SLIDER_DATA } from 'resources/constants';
 import { action } from 'store';
 import { actions } from 'store/actions';
 import { useSelector } from 'react-redux';
 import './sliderStyles.scss';
 
 const Slider = (props: any) => {
-	const min: number = CONSTANTS.SLIDER_MIN;
-	const step: number = CONSTANTS.SLIDER_STEP;
-	const max: number = CONSTANTS.SLIDER_MAX;
+	const { opts, value, actionType } = props;
+	const { address, args } = opts;
 
-	const { name, value, type, actionType } = props;
-
-	const displayName = name.split('/slider/').pop();
+	const min: number = SLIDER_MIN;
+	const step: number = SLIDER_STEP;
+	const max: number = SLIDER_MAX;
 
 	const isControlling: any = useSelector((state: any) => state.isControlling);
 
@@ -30,8 +29,8 @@ const Slider = (props: any) => {
 		setValue(currentValue);
 
 		const oscMessage = {
-			address: name,
-			args: [{ type: type, value: currentValue }],
+			address: address,
+			args: [{ type: args[0].type, value: currentValue }],
 		};
 
 		action(actions.SEND_MESSAGE, oscMessage);
@@ -41,16 +40,30 @@ const Slider = (props: any) => {
 		});
 	};
 
+	const whichSlider = (): string => {
+		let name: string = '';
+		const type: string = args[0].type;
+
+		for (let i = 0; i <= SLIDER_DATA.length; i++) {
+			if (type === SLIDER_DATA[i].address) {
+				name = SLIDER_DATA[i].displayName;
+				return name;
+			}
+		}
+
+		return name;
+	};
+
 	return (
 		<>
 			<div className='slider-data'>
 				<p>
-					CONTROL: {displayName === 'frequency' ? 'horizontal' : 'vertical'} <br />
+					CONTROL: {whichSlider()} <br />
 					VALUE: {value}
 				</p>
 			</div>
 			<input
-				id={name}
+				id={address}
 				type='range'
 				min={min}
 				step={step}
