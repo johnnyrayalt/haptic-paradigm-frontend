@@ -28,15 +28,17 @@ const SliderContainer = () => {
 			const name = sliderOpts.address.split(`/${SLIDER_NAME}/`).pop();
 
 			return (
-				<div key={name}>
-					<Wavy
-						axis={sliderOpts.args[0].type}
-						value={
-							sliderValues[sliderOpts.args[0].type] === 0
-								? 1
-								: sliderValues[sliderOpts.args[0].type]
-						}
-					/>
+				<div className='slider-container-inner' key={name}>
+					<div className='wave'>
+						<Wavy
+							axis={sliderOpts.args[0].type}
+							value={
+								sliderValues[sliderOpts.args[0].type] === 0
+									? 1
+									: sliderValues[sliderOpts.args[0].type]
+							}
+						/>
+					</div>
 					<Slider
 						key={name}
 						opts={sliderOpts}
@@ -50,7 +52,7 @@ const SliderContainer = () => {
 		});
 	};
 
-	return <div className='slider-container'>{returnSliders()}</div>;
+	return <div className='slider-container-outer'>{returnSliders()}</div>;
 };
 
 export default SliderContainer;

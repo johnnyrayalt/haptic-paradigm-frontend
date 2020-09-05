@@ -4,17 +4,17 @@ import './wavyStyles.scss';
 const Wavy = (props: any) => {
 	const { axis, value } = props;
 
-	let amp: number = 0;
 	let freq: number = 0;
+	let amp: number = 0;
 	let size: number = 0;
 
-	axis !== 'x' ? (amp = 40) : (amp = value);
-	axis !== 'y' ? (freq = 20) : (freq = value);
-	axis !== 'z' ? (size = 50) : (size = value);
+	axis !== 'x' ? (freq = 20) : (freq = value);
+	axis !== 'y' ? (amp = 40) : (amp = value);
+	axis !== 'z' ? (size = 1) : (size = value / 100);
 
 	const sine = (): string => {
 		let xs: any = [];
-		for (var i = 0; i <= 500; i++) {
+		for (var i = 0; i <= window.innerWidth; i++) {
 			xs.push(i);
 		}
 		let points = xs.map((x: any) => {
@@ -33,11 +33,14 @@ const Wavy = (props: any) => {
 
 	return (
 		<svg
-			viewBox='0 0 1 295'
+			version='1.1'
+			viewBox='0 0 300 300'
 			xmlns='http://www.w3.org/2000/svg'
 			preserveAspectRatio='xMinYMin meet'
+			height='300'
+			width='100%'
 		>
-			<path d={sine()}></path>
+			<path transform={`scale(${size} ${size})`} d={sine()}></path>
 		</svg>
 	);
 };

@@ -1,9 +1,11 @@
 .main-page-container {
 	margin-left: auto;
 	margin-right: auto;
+	width: 100%;
 
 	.text-container {
-		margin: 10px 20px;
+		margin: 40px 40px 0 0;
+		width: 100%;
 
 		.text {
 			font-size: 26px;
@@ -35,8 +37,42 @@
 		width: 320px;
 		height: 180px;
 	}
-}
 
-.padding {
-	margin-top: 30px;
+	.border-t,
+	.border-l,
+	.border-b,
+	.border-r {
+		background: #2727e6;
+		position: fixed;
+	}
+
+	.border-l,
+	.border-r {
+		top: 0;
+		bottom: 0;
+		width: 15px;
+	}
+
+	.border-l {
+		left: 0;
+	}
+
+	.border-r {
+		right: 0;
+	}
+
+	.border-t,
+	.border-b {
+		left: 0;
+		right: 0;
+		height: 15px;
+	}
+
+	.border-t {
+		top: 0;
+	}
+
+	.border-b {
+		bottom: 0;
+	}
 }

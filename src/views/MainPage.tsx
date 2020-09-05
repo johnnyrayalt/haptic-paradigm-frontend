@@ -16,6 +16,11 @@ const MainPage = () => {
 
 	return (
 		<div className='main-page-container'>
+			<div className='border-t'></div>
+			<div className='border-r'></div>
+			<div className='border-b'></div>
+			<div className='border-l'></div>
+
 			<div className='text-container'>
 				<div className='slider-container-header'>
 					<h4>HAPTIC PARADIGM</h4>
@@ -51,17 +56,11 @@ const MainPage = () => {
 					></iframe>
 				</div>
 				<div>
-					<p className='text'>Move a slider, wait 20 seconds to hear the response</p>
+					<p className='text'>How to use this site:</p>
+					<p className='text'>Move a slider, wait for a response</p>
 				</div>
 			</div>
 			<SliderContainer />
-			<div className='text-container'>
-				<p>Note: For this proof of concept the most stable browser is Firefox.</p>
-				<p>
-					If the sliders are at 50 each, don't move, and you are in watching mode, try
-					with a different browser.
-				</p>
-			</div>
 		</div>
 	);
 };

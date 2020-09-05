@@ -55,7 +55,7 @@ const Slider = (props: any) => {
 	};
 
 	return (
-		<>
+		<div className='slider-data-container'>
 			<div className='slider-data'>
 				<p>
 					CONTROL: {whichSlider()} <br />
@@ -72,7 +72,7 @@ const Slider = (props: any) => {
 				value={valueToSet}
 				onChange={onChange}
 			/>
-		</>
+		</div>
 	);
 };
 
