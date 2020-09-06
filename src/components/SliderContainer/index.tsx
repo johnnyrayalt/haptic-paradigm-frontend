@@ -3,9 +3,9 @@ import Slider from 'components/Slider';
 import { useSelector } from 'react-redux';
 import { SLIDER, SLIDER_DATA, SLIDER_NAME } from 'resources/constants';
 import { actions } from 'store/actions';
-import Wavy from 'components/Wavy';
+import SineWave from 'components/SineWave';
 import './sliderContainerStyles.scss';
-import { OscMessage } from 'interfaces/IOscMessage';
+import { OscMessage } from 'interfaces/Types/IOscMessage';
 
 const SliderContainer = () => {
 	const sliderValues: { [name: string]: any } = {
@@ -30,7 +30,7 @@ const SliderContainer = () => {
 			return (
 				<div className='slider-container-inner' key={name}>
 					<div className='wave'>
-						<Wavy
+						<SineWave
 							axis={sliderOpts.args[0].type}
 							value={
 								sliderValues[sliderOpts.args[0].type] === 0
