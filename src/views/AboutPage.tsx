@@ -1,22 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './textPageStyles.scss';
+import './welcomePageStyles.scss';
 import FeaturedArtist from 'components/FeaturedArtist';
 import TimeStamp from 'components/TimeStamp';
+import { IAboutPageProps } from 'interfaces/Props/IAboutPageProps';
 
-const AboutPage = () => {
+const AboutPage = (props: IAboutPageProps) => {
+	const { linksOn } = props;
+
 	return (
 		<div className='text-page'>
 			<h1 className='text-header'>about</h1>
 			<div className='text-text-container'>
 				<p>
-					<Link className='text-link off' to='/control-room'>
+					<Link className={`text-link ${linksOn ? 'on' : 'off'}`} to='/control-room'>
 						<TimeStamp />
 						Back to the control room
 					</Link>
+				</p>
+				<p>
 					<Link className='text-link' to='/welcome'>
 						<TimeStamp />
-						Back
+						Back Home
 					</Link>
 				</p>
 				<p>
