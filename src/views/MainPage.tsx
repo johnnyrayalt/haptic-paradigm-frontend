@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import './mainPageStyles.scss';
 import { Link } from 'react-router-dom';
+import VideoPlayer from 'components/VideoPlayer';
 
 const MainPage = () => {
 	const isControlling: any = useSelector((state: any) => state.isControlling);
@@ -46,14 +47,7 @@ const MainPage = () => {
 					)}
 				</div>
 				<div>
-					<iframe
-						title='player'
-						src='https://vimeo.com/event/165633/embed'
-						frameBorder='0'
-						allow='autoplay; fullscreen'
-						allowFullScreen={false}
-						className='embedded-player'
-					></iframe>
+					<VideoPlayer videoType={'live'} />
 				</div>
 				<div>
 					<p className='text'>How to use this site:</p>
