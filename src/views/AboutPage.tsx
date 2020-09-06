@@ -1,7 +1,8 @@
 import React from 'react';
-import moment from 'moment';
 import { Link } from 'react-router-dom';
 import './textPageStyles.scss';
+import FeaturedArtist from 'components/FeaturedArtist';
+import TimeStamp from 'components/TimeStamp';
 
 const AboutPage = () => {
 	return (
@@ -10,15 +11,11 @@ const AboutPage = () => {
 			<div className='text-text-container'>
 				<p>
 					<Link className='text-link off' to='/control-room'>
-						<span>
-							{moment().format('L HH:mm')} :\{'>'}
-						</span>{' '}
+						<TimeStamp />
 						Back to the control room
 					</Link>
 					<Link className='text-link' to='/welcome'>
-						<span>
-							{moment().format('L HH:mm')} :\{'>'}
-						</span>{' '}
+						<TimeStamp />
 						Back
 					</Link>
 				</p>
@@ -29,61 +26,51 @@ const AboutPage = () => {
 						target='_blank'
 						rel='noopener noreferrer'
 					>
-						<span>
-							{moment().format('L HH:mm')} :\{'>'}
-						</span>{' '}
+						<TimeStamp />
 						If you enjoy this work consider donating to any of these organizations
 					</a>
 				</p>
+				<FeaturedArtist />
+
 				<p className='text-text'>
-					<span>
-						{moment().format('L HH:mm')} :\{'>'}
-					</span>{' '}
+					<TimeStamp />
+					About Haptic Paradigm
+				</p>
+				<p className='text-text'>
+					<TimeStamp />
 					Haptic Paradigm is a web based interactive installation conceptualized by Chloe
 					Alexandra Thompson with webtools created in collaboration with Johnny Ray Alt.
 				</p>
 				<p className='text-text'>
-					<span>
-						{moment().format('L HH:mm')} :\{'>'}
-					</span>{' '}
+					<TimeStamp />
 					The installation will be activated Monday, June 29th from 06:00pm - 11:00pm EST
 					for interaction and streaming.
 				</p>
 				<p className='text-text'>
-					<span>
-						{moment().format('L HH:mm')} :\{'>'}
-					</span>{' '}
+					<TimeStamp />
 					This first engagement is using the webtools to interact with a generative
 					composition.
 				</p>
 				<p className='text-text'>
-					<span>
-						{moment().format('L HH:mm')} :\{'>'}
-					</span>{' '}
+					<TimeStamp />
 					The motivation behind the project is to explore the ways we remain in
 					relationship to one another, despite being in isolation and outside one
 					another’s view.
 				</p>
 				<p className='text-text'>
-					<span>
-						{moment().format('L HH:mm')} :\{'>'}
-					</span>{' '}
+					<TimeStamp />
 					The composition's structure or medium may shift between gallery hours, as a
 					response to inspiration the users have contributed during the previous
 					performance. The composition is active and shifting without outside interaction,
 					Haptic Paradigm is a tool encouraging participants to play by ear.
 				</p>
 				<p className='text-text'>
-					<span>
-						{moment().format('L HH:mm')} :\{'>'}
-					</span>{' '}
+					<TimeStamp />
 					Participants will bring outside variables into the piece and influence the work
 					over time.
 				</p>
 				<p className='text-text'>
-					<span>
-						{moment().format('L HH:mm')} :\{'>'}
-					</span>{' '}
+					<TimeStamp />
 					Chloe Alexandra Thompson is a Cree (Beaver Lake Cree Nation), Canadian,
 					interdisciplinary artist and sound designer composing works of sonic minimalism
 					that envelope listeners into a state of equilibrium and fill rooms with discrete
@@ -96,9 +83,7 @@ const AboutPage = () => {
 					is presently based in Brooklyn, NY, USA
 				</p>
 				<p className='text-text'>
-					<span>
-						{moment().format('L HH:mm')} :\{'>'}
-					</span>{' '}
+					<TimeStamp />
 					Johnny Ray Alt (b. 1991, Los Angeles, CA) is an interdisciplinary artist,
 					curator, and software engineer whose work explores the creation of spaces that
 					aim to shorten the distance between original and documentation. Focused on
