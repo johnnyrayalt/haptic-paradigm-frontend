@@ -1,7 +1,7 @@
 import React from 'react';
 import './featuredArtistStyles.scss';
 import TimeStamp from 'components/TimeStamp';
-import { FEATURED_ARTIST_BIO, FEATURED_ARTIST_NAME } from 'resources/constants';
+import { FEATURED_ARTIST_BIO, FEATURED_ARTIST_NAME } from 'resources/currentProjectConstants';
 
 const FeaturedArtist = () => {
 	return (
@@ -10,7 +10,7 @@ const FeaturedArtist = () => {
 				<TimeStamp />
 				Featured Artist: {FEATURED_ARTIST_NAME}
 			</p>
-			<p className='text-text'>
+			<p className='text-text off'>
 				<TimeStamp />
 				{FEATURED_ARTIST_BIO}
 			</p>
