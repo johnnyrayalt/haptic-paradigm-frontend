@@ -3,8 +3,8 @@ import { TIsDocumentation } from 'interfaces/Types/TIsDocumentation';
 import { TSliderData } from 'interfaces/Types/TSliderData';
 
 export const FEATURED_ARTIST_NAME: string = 'Brenna Murphy';
-export const FEATURED_ARTIST_BIO: string =
-	'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+export const FEATURED_ARTIST_BIO: string = `Brenna Murphy works with electronic sculpture, building trans-dimensional labyrinths in an ongoing meditation on the framework of sentience and embodiment. She also works collaboratively with Birch Cooper under the collective name MSHR, building and playing with cybernetic systems of light and sound. Her most recent solo exhibition was at And/Or Gallery, where she presented a collection of her web based artworks from the last decade and archived them on her new domain: `;
+export const FEATURED_ARTIST_LINK: any = 'https://lattice.tools/';
 
 export const EXHIBITION_DATE: string = 'September 13, 2020';
 
