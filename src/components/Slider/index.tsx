@@ -5,6 +5,7 @@ import { actions } from 'store/actions';
 import { useSelector } from 'react-redux';
 import './sliderStyles.scss';
 import { SLIDER_DATA } from 'resources/currentProjectConstants';
+import SliderInfo from 'components/SliderInfo';
 
 const Slider = (props: any) => {
 	const { opts, value, actionType } = props;
@@ -57,12 +58,7 @@ const Slider = (props: any) => {
 
 	return (
 		<div className='slider-data-container'>
-			<div className='slider-data'>
-				<p>
-					CONTROL: {whichSlider()} <br />
-					VALUE: {value}
-				</p>
-			</div>
+			<SliderInfo value={value} whichSlider={whichSlider} />
 			<input
 				id={address}
 				type='range'
