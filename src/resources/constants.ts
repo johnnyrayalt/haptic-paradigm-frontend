@@ -1,4 +1,8 @@
-import { EXHIBITION_DATE, FEATURED_ARTIST_NAME } from './currentProjectConstants';
+import {
+	EXHIBITION_DATE,
+	FEATURED_ARTIST_NAME,
+	ADDITIONAL_EXHIBITION_INFO,
+} from './currentProjectConstants';
 import { OscMessage } from 'interfaces/Types/TOscMessage';
 
 export const SLIDER_MIN: number = 0;
@@ -23,4 +27,15 @@ export const HOSTED_VIDEO_PARENT: string =
 export const TWITCH_CHANNEL_ID: string = '?channel=tealportals';
 export const TWITCH_VIDEO_ID: string = '?video=732720305';
 
-export const EXHIBITION_INFO: string = `The next public viewing will be ${EXHIBITION_DATE} featuring visuals from ${FEATURED_ARTIST_NAME}`;
+export const EXHIBITION_INFO = (hasAdditionalInfo: boolean): string =>
+	`The next public viewing will be ${EXHIBITION_DATE} from ${new Date(
+		Date.UTC(20, 9, 13, 20),
+	).toLocaleString([], {
+		hour12: true,
+		hour: '2-digit',
+	})} to ${new Date(Date.UTC(20, 9, 13, 23)).toLocaleString([], {
+		hour12: true,
+		hour: '2-digit',
+	})} featuring visuals from ${FEATURED_ARTIST_NAME}${
+		hasAdditionalInfo ? ADDITIONAL_EXHIBITION_INFO : ''
+	}`;

@@ -16,7 +16,11 @@ const App = () => {
 					<Route
 						path='/welcome'
 						component={() => (
-							<WelcomePage isDocumentation={IS_DOCUMENTATION} linksOn={LINKS_ON} />
+							<WelcomePage
+								isDocumentation={IS_DOCUMENTATION}
+								linksOn={LINKS_ON}
+								hasAdditionalInfo={true}
+							/>
 						)}
 					/>
 					<Route path='/control-room' component={MainPage} />
