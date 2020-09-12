@@ -14,7 +14,7 @@ const SineWave = (props: any) => {
 
 	const sine = (): string => {
 		let xs: any = [];
-		for (var i = 0; i <= window.innerWidth; i++) {
+		for (var i = 0; i <= window.innerWidth + 100; i++) {
 			xs.push(i);
 		}
 		let points = xs.map((x: any) => {
@@ -34,13 +34,17 @@ const SineWave = (props: any) => {
 	return (
 		<svg
 			version='1.1'
-			viewBox='0 0 300 300'
+			viewBox={`0 0 ${window.innerWidth} 210`}
 			xmlns='http://www.w3.org/2000/svg'
 			preserveAspectRatio='xMinYMin meet'
-			height='300'
-			width='100%'
+			height='200'
+			width={`${window.innerWidth}`}
 		>
-			<path transform={`scale(${size} ${size})`} d={sine()}></path>
+			<path
+				width={`${window.innerWidth}`}
+				transform={`scale(${size} ${size}) translate(0 -85)`}
+				d={sine()}
+			></path>
 		</svg>
 	);
 };

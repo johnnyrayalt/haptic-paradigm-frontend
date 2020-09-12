@@ -7,7 +7,7 @@ import { IS_DOCUMENTATION, LINKS_ON } from 'resources/currentProjectConstants';
 
 const App = () => {
 	return (
-		<div className='app-wrapper'>
+		<div className='app-wrapper' style={{ overflow: 'hidden' }}>
 			<div className='slider-container-wrapper'>
 				<Switch>
 					<Route exact path='/'>
