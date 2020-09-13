@@ -23,6 +23,7 @@ input[type='range'],
 }
 
 input[type='range'] {
+	z-index: 10000000;
 	width: 170px;
 	overflow: hidden;
 	-webkit-appearance: none;
@@ -30,6 +31,7 @@ input[type='range'] {
 	outline: none;
 	border-radius: 1em;
 	display: block;
+	position: relative;
 
 	&::-webkit-slider-runnable-track {
 		@include track;
