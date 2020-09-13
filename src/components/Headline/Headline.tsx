@@ -10,10 +10,17 @@ const Headline = (props: IHeadLineProps) => {
 	return (
 		<>
 			{isLive ? (
-				<Link className='text-link' to='/control-room'>
-					<TimeStamp />
-					The gallery is currently open. Come on in, the water's fine.
-				</Link>
+				<div>
+					<p className='important-text'>
+						<TimeStamp />
+						Featuring visuals by Brenna Murphy, sound by Chloe Alexandra Thompson:
+						Co-comissioned by Hervisions & Arebyte
+					</p>
+					<Link className='text-link' to='/control-room'>
+						<TimeStamp />
+						The gallery is currently open. Come on in, the water's fine.
+					</Link>
+				</div>
 			) : (
 				<div>
 					<TimeStamp />
