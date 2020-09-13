@@ -52,6 +52,7 @@ const MainPage = () => {
 				<div>
 					<p className='text'>How to use this site:</p>
 					<p className='text'>Move a slider, wait for a response</p>
+					<p className='text'>Response times may vary</p>
 				</div>
 			</div>
 			<SliderContainer />
