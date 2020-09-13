@@ -1,12 +1,12 @@
 @mixin track() {
 	background-color: white;
-	height: 10px;
+	height: 15px;
 	-webkit-appearance: none;
 }
 
 @mixin thumb {
-	width: 10px;
-	height: 20px;
+	width: 15px;
+	height: 15px;
 	cursor: ew-resize;
 	background: #0042ff;
 	-webkit-appearance: none;
