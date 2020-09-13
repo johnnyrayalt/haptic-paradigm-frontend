@@ -21,11 +21,12 @@ const WelcomePage = (props: IWelcomePageProps) => {
 					</Link>
 				</p>
 				<p className='text-text important-text'>
-					<TimeStamp />
 					<Headline isLive={isLive} hasAdditionalInfo={hasAdditionalInfo} />
 				</p>
-
-				<VideoPlayer videoType={VIDEO_TYPE} />
+				<div>
+					<TimeStamp />
+					<VideoPlayer videoType={VIDEO_TYPE} />
+				</div>
 
 				<p className='text-text'>
 					<TimeStamp />
