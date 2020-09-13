@@ -14,8 +14,8 @@ export const ADDITIONAL_EXHIBITION_INFO: string =
 
 export const EXHIBITION_DATE: string = 'September 13, 2020';
 
-export const LINKS_ON: TLinksOn = false;
-export const IS_LIVE: TIsLive = false;
+export const LINKS_ON: TLinksOn = true;
+export const IS_LIVE: TIsLive = true;
 
 export const SLIDER_NAME: string = 'cube';
 export const SLIDER_DATA: TSliderData[] = [
