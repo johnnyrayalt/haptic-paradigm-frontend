@@ -3,11 +3,11 @@ import { EXHIBITION_INFO } from 'resources/constants';
 import { IHeadLineProps } from 'interfaces/Props/IHeadLineProps';
 
 const Headline = (props: IHeadLineProps) => {
-	const { isDocumentation, hasAdditionalInfo } = props;
+	const { isLive, hasAdditionalInfo } = props;
 
 	return (
 		<>
-			{isDocumentation
+			{isLive
 				? 'The gallery is currently closed but here is audio documentation of our last interaction.'
 				: EXHIBITION_INFO(hasAdditionalInfo)}
 		</>

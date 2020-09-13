@@ -3,7 +3,7 @@ import MainPage from 'views/MainPage';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import WelcomePage from 'views/WelcomePage';
 import AboutPage from 'views/AboutPage';
-import { IS_DOCUMENTATION, LINKS_ON } from 'resources/currentProjectConstants';
+import { IS_LIVE, LINKS_ON } from 'resources/currentProjectConstants';
 
 const App = () => {
 	return (
@@ -17,7 +17,7 @@ const App = () => {
 						path='/welcome'
 						component={() => (
 							<WelcomePage
-								isDocumentation={IS_DOCUMENTATION}
+								isLive={IS_LIVE}
 								linksOn={LINKS_ON}
 								hasAdditionalInfo={true}
 							/>

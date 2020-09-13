@@ -1,5 +1,5 @@
 import { TLinksOn } from 'interfaces/Types/TLinksOn';
-import { TIsDocumentation } from 'interfaces/Types/TIsDocumentation';
+import { TIsLive } from 'interfaces/Types/TIsLive';
 import { TSliderData } from 'interfaces/Types/TSliderData';
 
 export const CURATORIAL_STATEMENT: string = `Brenna Murphy x Chloe Alexandra Thompson’s environmental installation on Haptic Paradigm is part of The Art Of No Likes HERVISIONS AOS residency Phase 3, You Can't Hit A Moving Target - Navigating Through the Noise and Volume of Opinion.
@@ -15,7 +15,7 @@ export const ADDITIONAL_EXHIBITION_INFO: string =
 export const EXHIBITION_DATE: string = 'September 13, 2020';
 
 export const LINKS_ON: TLinksOn = false;
-export const IS_DOCUMENTATION: TIsDocumentation = false;
+export const IS_LIVE: TIsLive = false;
 
 export const SLIDER_NAME: string = 'cube';
 export const SLIDER_DATA: TSliderData[] = [
