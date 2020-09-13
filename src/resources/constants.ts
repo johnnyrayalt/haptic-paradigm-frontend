@@ -22,7 +22,7 @@ export const SLIDER = (address: string, value: number, name: string = SLIDER_NAM
 
 export const LOCAL_VIDEO_PARENT: string = '&parent=localhost';
 export const HOSTED_VIDEO_PARENT: string =
-	'&parent=https://haptic-paradigm.com&parent=https://www.haptic-paradigm.com';
+	'&parent=haptic-paradigm.com&parent=www.haptic-paradigm.com';
 
 export const TWITCH_CHANNEL_ID: string = '?channel=tealportals';
 export const TWITCH_VIDEO_ID: string = '?video=732720305';
