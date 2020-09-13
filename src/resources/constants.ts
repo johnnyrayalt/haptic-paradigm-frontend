@@ -29,11 +29,11 @@ export const TWITCH_VIDEO_ID: string = '?video=732720305';
 
 export const EXHIBITION_INFO = (hasAdditionalInfo: boolean): string =>
 	`The next public viewing will be ${EXHIBITION_DATE} from ${new Date(
-		Date.UTC(20, 9, 13, 20),
+		Date.UTC(20, 8, 13, 20),
 	).toLocaleString([], {
 		hour12: true,
 		hour: '2-digit',
-	})} to ${new Date(Date.UTC(20, 9, 13, 23)).toLocaleString([], {
+	})} to ${new Date(Date.UTC(20, 8, 13, 23)).toLocaleString([], {
 		hour12: true,
 		hour: '2-digit',
 	})} featuring visuals from ${FEATURED_ARTIST_NAME}${
