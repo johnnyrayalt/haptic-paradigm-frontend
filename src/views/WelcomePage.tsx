@@ -7,7 +7,7 @@ import Headline from 'components/Headline/Headline';
 import { IWelcomePageProps } from 'interfaces/Props/IWelcomePageProps';
 
 const WelcomePage = (props: IWelcomePageProps) => {
-	const { isDocumentation, linksOn } = props;
+	const { isLive, linksOn, hasAdditionalInfo } = props;
 	const VIDEO_TYPE = 'past';
 
 	return (
@@ -21,11 +21,12 @@ const WelcomePage = (props: IWelcomePageProps) => {
 					</Link>
 				</p>
 				<p className='text-text important-text'>
-					<TimeStamp />
-					<Headline isDocumentation={isDocumentation} />
+					<Headline isLive={isLive} hasAdditionalInfo={hasAdditionalInfo} />
 				</p>
-
-				<VideoPlayer videoType={VIDEO_TYPE} />
+				<div>
+					<TimeStamp />
+					<VideoPlayer videoType={VIDEO_TYPE} />
+				</div>
 
 				<p className='text-text'>
 					<TimeStamp />

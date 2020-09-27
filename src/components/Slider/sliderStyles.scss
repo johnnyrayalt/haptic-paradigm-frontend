@@ -1,12 +1,12 @@
 @mixin track() {
 	background-color: white;
-	height: 10px;
+	height: 15px;
 	-webkit-appearance: none;
 }
 
 @mixin thumb {
-	width: 10px;
-	height: 20px;
+	width: 15px;
+	height: 15px;
 	cursor: ew-resize;
 	background: #0042ff;
 	-webkit-appearance: none;
@@ -23,6 +23,7 @@ input[type='range'],
 }
 
 input[type='range'] {
+	z-index: 10000000;
 	width: 170px;
 	overflow: hidden;
 	-webkit-appearance: none;
@@ -30,6 +31,7 @@ input[type='range'] {
 	outline: none;
 	border-radius: 1em;
 	display: block;
+	position: relative;
 
 	&::-webkit-slider-runnable-track {
 		@include track;

@@ -7,7 +7,7 @@ const URL = process.env.REACT_APP_URL || 'localhost';
 const PORT = process.env.PORT || '8000';
 
 function connect() {
-	const socket = io(`${URL}:${PORT}`, { transports: ['websocket'], path: '/socket/socket.io' });
+	const socket = io(`${URL}:${PORT}`, { transports: ['websocket'] });
 	return new Promise((resolve) => {
 		socket.on('connect', () => {
 			console.log(`[CLIENT]: Attempting to connect to server over port ${PORT}`);

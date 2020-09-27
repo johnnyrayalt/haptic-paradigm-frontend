@@ -1,5 +1,6 @@
-import { TIsDocumentation } from './../Types/TIsDocumentation';
+import { TIsLive } from '../Types/TIsLive';
 
 export interface IHeadLineProps {
-	isDocumentation: TIsDocumentation;
+	isLive: TIsLive;
+	hasAdditionalInfo: boolean;
 }

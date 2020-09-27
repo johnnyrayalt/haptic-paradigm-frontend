@@ -45,7 +45,7 @@ const VideoPlayer = (props: IVideoPlayerProps) => {
 				title='player'
 				src={selectUrl(videoType)}
 				frameBorder='0'
-				allow='autoplay; fullscreen'
+				allow='fullscreen'
 				allowFullScreen={false}
 				className='embedded-player'
 			></iframe>

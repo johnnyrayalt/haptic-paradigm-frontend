@@ -4,6 +4,7 @@ import './welcomePageStyles.scss';
 import FeaturedArtist from 'components/FeaturedArtist';
 import TimeStamp from 'components/TimeStamp';
 import { IAboutPageProps } from 'interfaces/Props/IAboutPageProps';
+import { CURATORIAL_STATEMENT } from 'resources/currentProjectConstants';
 
 const AboutPage = (props: IAboutPageProps) => {
 	const { linksOn } = props;
@@ -36,6 +37,10 @@ const AboutPage = (props: IAboutPageProps) => {
 					</a>
 				</p>
 				<FeaturedArtist />
+				<p className='text-text'>
+					<TimeStamp />
+					{CURATORIAL_STATEMENT}
+				</p>
 
 				<p className='text-text'>
 					<TimeStamp />
@@ -45,16 +50,6 @@ const AboutPage = (props: IAboutPageProps) => {
 					<TimeStamp />
 					Haptic Paradigm is a web based interactive installation conceptualized by Chloe
 					Alexandra Thompson with webtools created in collaboration with Johnny Ray Alt.
-				</p>
-				<p className='text-text'>
-					<TimeStamp />
-					The installation will be activated Monday, June 29th from 06:00pm - 11:00pm EST
-					for interaction and streaming.
-				</p>
-				<p className='text-text'>
-					<TimeStamp />
-					This first engagement is using the webtools to interact with a generative
-					composition.
 				</p>
 				<p className='text-text'>
 					<TimeStamp />
@@ -85,7 +80,17 @@ const AboutPage = (props: IAboutPageProps) => {
 					produce felt effects on the body. Fascinated by digital technology’s seemingly
 					endless possibilities for experimentation, she routinely collaborates with other
 					artists to explore new avenues for sonic environments and experiences. Thompson
-					is presently based in Brooklyn, NY, USA
+					is presently based in Brooklyn, NY, USA. You can find an archive of works at:{' '}
+					<span>
+						<a
+							className='text-link'
+							href='https://www.chloealexandra.info/'
+							rel='noopener noreferrer'
+							target='_blank'
+						>
+							chloealexandra.info
+						</a>
+					</span>
 				</p>
 				<p className='text-text'>
 					<TimeStamp />
