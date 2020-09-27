@@ -30,16 +30,14 @@ const SliderContainer = () => {
 
 			return (
 				<div className='slider-container-inner' key={name}>
-					<div className='wave'>
-						<SineWave
-							axis={sliderOpts.args[0].type}
-							value={
-								sliderValues[sliderOpts.args[0].type] === 0
-									? 1
-									: sliderValues[sliderOpts.args[0].type]
-							}
-						/>
-					</div>
+					<SineWave
+						axis={sliderOpts.args[0].type}
+						value={
+							sliderValues[sliderOpts.args[0].type] === 0
+								? 1
+								: sliderValues[sliderOpts.args[0].type]
+						}
+					/>
 					<Slider
 						key={name}
 						opts={sliderOpts}

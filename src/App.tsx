@@ -3,11 +3,11 @@ import MainPage from 'views/MainPage';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import WelcomePage from 'views/WelcomePage';
 import AboutPage from 'views/AboutPage';
-import { IS_DOCUMENTATION, LINKS_ON } from 'resources/currentProjectConstants';
+import { IS_LIVE, LINKS_ON } from 'resources/currentProjectConstants';
 
 const App = () => {
 	return (
-		<div className='app-wrapper'>
+		<div className='app-wrapper' style={{ overflow: 'hidden' }}>
 			<div className='slider-container-wrapper'>
 				<Switch>
 					<Route exact path='/'>
@@ -16,7 +16,11 @@ const App = () => {
 					<Route
 						path='/welcome'
 						component={() => (
-							<WelcomePage isDocumentation={IS_DOCUMENTATION} linksOn={LINKS_ON} />
+							<WelcomePage
+								isLive={IS_LIVE}
+								linksOn={LINKS_ON}
+								hasAdditionalInfo={true}
+							/>
 						)}
 					/>
 					<Route path='/control-room' component={MainPage} />

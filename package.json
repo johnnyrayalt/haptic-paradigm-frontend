@@ -24,6 +24,7 @@
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
         "moment": "2.27.0",
+        "moment-timezone": "^0.5.31",
         "node-sass": "4.14.1",
         "react": "16.13.1",
         "react-dom": "16.13.1",
@@ -48,8 +49,7 @@
     },
     "scripts": {
         "build": "react-scripts build",
-        "build:prod": "REACT_APP_PORT=8002 REACT_APP_URL=http://localhost:8002/ react-scripts build",
-        "postinstall": "rimraf build && npm run build",
+        "build:prod": "REACT_APP_PORT=8000 REACT_APP_URL=livelyservingitup.site react-scripts build",
         "docker:build": "docker build -t chloealxandra/esfrontend .",
         "docker:run": "docker run -p 8080:5000 -p 8002:8002 chloealxandra/esfrontend",
         "docker": "npm run docker:build && npm run docker:run",
