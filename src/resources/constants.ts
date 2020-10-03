@@ -10,6 +10,8 @@ export const SLIDER_MIN: number = 0;
 export const SLIDER_STEP: number = 1;
 export const SLIDER_MAX: number = 100;
 
+export const BLUE: string = '#2727e6';
+
 export const SLIDER_NAME: string = 'cube';
 export const SLIDER = (address: string, value: number, name: string = SLIDER_NAME): OscMessage => ({
 	address: `/${name}/${address}`,

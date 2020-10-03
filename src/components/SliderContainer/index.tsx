@@ -1,5 +1,5 @@
 import React from 'react';
-import Slider from 'components/Slider';
+import Slider from 'components/UIControls/Slider';
 import { useSelector } from 'react-redux';
 import { SLIDER, SLIDER_NAME } from 'resources/constants';
 import { actions } from 'store/actions';
@@ -51,7 +51,11 @@ const SliderContainer = () => {
 		});
 	};
 
-	return <div className='slider-container-outer'>{returnSliders()}</div>;
+	return (
+		<div>
+			<div className='slider-container-outer'>{returnSliders()}</div>
+		</div>
+	);
 };
 
 export default SliderContainer;

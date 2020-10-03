@@ -2,6 +2,12 @@
 	margin: 0 auto;
 	width: 100%;
 
+	canvas {
+		border: 3px solid #2727e6;
+		margin: 40px 0 0 40px;
+		touch-action: none;
+	}
+
 	.text-container {
 		margin: 40px 0 0 40px;
 		width: 100%;

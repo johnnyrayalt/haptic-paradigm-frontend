@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet';
 import './mainPageStyles.scss';
 import { Link } from 'react-router-dom';
 import VideoPlayer from 'components/VideoPlayer';
+import XYPad from 'components/UIControls/XYPad';
 
 const MainPage = () => {
 	const isControlling: any = useSelector((state: any) => state.isControlling);
@@ -55,7 +56,9 @@ const MainPage = () => {
 					<p className='text'>Response times may vary</p>
 				</div>
 			</div>
-			<SliderContainer />
+			<div className='xy-chart'>
+				<XYPad setCanvasSize={window.screen.width} />
+			</div>
 		</div>
 	);
 };
