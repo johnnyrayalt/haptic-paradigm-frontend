@@ -1,3 +1,3 @@
 export interface IAboutPageProps {
-	linksOn: 'true' | 'false';
+	linksOn: boolean;
 }

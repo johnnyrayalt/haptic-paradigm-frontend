@@ -5,7 +5,7 @@ import FeaturedArtist from 'components/FeaturedArtist';
 import TimeStamp from 'components/TimeStamp';
 import { IAboutPageProps } from 'interfaces/Props/IAboutPageProps';
 
-const AboutPage = (props: { linksOn: true | false }) => {
+const AboutPage = (props: IAboutPageProps) => {
 	const { linksOn } = props;
 
 	return (
