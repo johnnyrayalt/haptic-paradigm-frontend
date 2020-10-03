@@ -1,5 +1,3 @@
-import { TLinksOn } from 'interfaces/Types/TLinksOn';
-
 export interface IAboutPageProps {
-	linksOn: TLinksOn;
+	linksOn: 'true' | 'false';
 }

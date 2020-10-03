@@ -5,9 +5,13 @@ import {
 	FEATURED_ARTIST_BIO,
 	FEATURED_ARTIST_NAME,
 	FEATURED_ARTIST_LINK,
-} from 'resources/currentProjectConstants';
+} from 'resources/constants/currentProjectConstants';
 
 const FeaturedArtist = () => {
+	const featuredArtistLink = (): string => {
+		return FEATURED_ARTIST_LINK.slice(8).slice(0, -1);
+	};
+
 	return (
 		<div>
 			<p className='text-text'>
@@ -24,7 +28,7 @@ const FeaturedArtist = () => {
 						rel='noopener noreferrer'
 						target='_blank'
 					>
-						lattice.tools
+						{featuredArtistLink()}
 					</a>
 				</span>
 			</p>

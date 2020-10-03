@@ -5,7 +5,7 @@ import {
 	LOCAL_VIDEO_PARENT,
 	TWITCH_CHANNEL_ID,
 	TWITCH_VIDEO_ID,
-} from 'resources/constants';
+} from 'resources/constants/constants';
 import { IVideoPlayerProps } from 'interfaces/Props/IVideoPlayerProps';
 
 const VideoPlayer = (props: IVideoPlayerProps) => {

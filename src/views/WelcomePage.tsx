@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import './welcomePageStyles.scss';
 import VideoPlayer from 'components/VideoPlayer';
 import TimeStamp from 'components/TimeStamp';
-import Headline from 'components/Headline/Headline';
+import Headline from 'components/Headline';
 import { IWelcomePageProps } from 'interfaces/Props/IWelcomePageProps';
+import { VIDEO } from 'resources/constants/currentProjectConstants';
 
 const WelcomePage = (props: IWelcomePageProps) => {
 	const { isLive, linksOn, hasAdditionalInfo } = props;
-	const VIDEO_TYPE = 'past';
+	const VIDEO_TYPE = VIDEO;
 
 	return (
 		<div className='text-page'>
@@ -20,9 +21,8 @@ const WelcomePage = (props: IWelcomePageProps) => {
 						Learn more about this project
 					</Link>
 				</p>
-				<p className='text-text important-text'>
-					<Headline isLive={isLive} hasAdditionalInfo={hasAdditionalInfo} />
-				</p>
+				<Headline isLive={isLive} hasAdditionalInfo={hasAdditionalInfo} />
+
 				<div>
 					<TimeStamp />
 					<VideoPlayer videoType={VIDEO_TYPE} />

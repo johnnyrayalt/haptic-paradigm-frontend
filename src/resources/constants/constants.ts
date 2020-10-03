@@ -35,8 +35,5 @@ const setDate = (hours: number) => {
 	return moment(`2020-09-13T${hours}:00:00Z`).tz(timezone).format('LT');
 };
 
-export const EXHIBITION_INFO = (hasAdditionalInfo: boolean): string =>
-	`The last public viewing was ${EXHIBITION_DATE} from ${setDate(19)}
-    to ${setDate(22)} featuring visuals from ${FEATURED_ARTIST_NAME}${
-		hasAdditionalInfo ? ADDITIONAL_EXHIBITION_INFO : ''
-	}`;
+export const EXHIBITION_INFO = (): string =>
+	`The next public viewing will be ${EXHIBITION_DATE} featuring visuals from ${FEATURED_ARTIST_NAME}`;

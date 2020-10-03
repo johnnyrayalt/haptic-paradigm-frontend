@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { SLIDER_MAX, SLIDER_MIN, SLIDER_STEP } from 'resources/constants';
+import { SLIDER_MAX, SLIDER_MIN, SLIDER_STEP } from 'resources/constants/constants';
 import { action } from 'store';
 import { actions } from 'store/actions';
 import { useSelector } from 'react-redux';
 import './sliderStyles.scss';
-import { SLIDER_DATA } from 'resources/currentProjectConstants';
+import { SLIDER_DATA } from 'resources/constants/uiConstants';
 import SliderInfo from 'components/SliderInfo';
 
 const Slider = (props: any) => {

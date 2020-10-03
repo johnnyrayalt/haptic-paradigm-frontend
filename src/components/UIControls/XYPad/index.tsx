@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sketch from 'react-p5';
 import p5Types from 'p5';
-import { BLUE } from 'resources/constants';
+import { BLUE } from 'resources/constants/constants';
 import { IXYPadProps } from 'interfaces/Props/IXYPadProps';
 
 const XYPad = (props: IXYPadProps) => {

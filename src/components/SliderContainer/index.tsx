@@ -1,11 +1,11 @@
 import React from 'react';
 import Slider from 'components/UIControls/Slider';
 import { useSelector } from 'react-redux';
-import { SLIDER, SLIDER_NAME } from 'resources/constants';
+import { SLIDER, SLIDER_NAME } from 'resources/constants/constants';
 import { actions } from 'store/actions';
 import SineWave from 'components/SineWave';
 import './sliderContainerStyles.scss';
-import { SLIDER_DATA } from 'resources/currentProjectConstants';
+import { SLIDER_DATA } from 'resources/constants/uiConstants';
 import { OscMessage } from 'interfaces/Types/TOscMessage';
 
 const SliderContainer = () => {

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import SliderContainer from 'components/SliderContainer';
 import { action } from 'store';
 import { actions } from 'store/actions';
 import { useSelector } from 'react-redux';
@@ -8,9 +7,35 @@ import './mainPageStyles.scss';
 import { Link } from 'react-router-dom';
 import VideoPlayer from 'components/VideoPlayer';
 import XYPad from 'components/UIControls/XYPad';
+import SliderContainer from 'components/SliderContainer';
 
-const MainPage = () => {
+const MainPage = (props: { uiScheme: string }) => {
+	const { uiScheme } = props;
+
 	const isControlling: any = useSelector((state: any) => state.isControlling);
+
+	const setUIScheme = (scheme: string) => {
+		switch (true) {
+			case scheme === 'sliders':
+				return (
+					<div className='slider-container'>
+						<SliderContainer />
+					</div>
+				);
+			case scheme === 'xypad':
+				return (
+					<div className='xy-chart'>
+						<XYPad setCanvasSize={window.screen.width} />
+					</div>
+				);
+			default:
+				return (
+					<div>
+						<p className='text'>Please enter a UI Scheme!</p>
+					</div>
+				);
+		}
+	};
 
 	useEffect(() => {
 		action(actions.CONNECT_TO_SERVER);
@@ -56,9 +81,7 @@ const MainPage = () => {
 					<p className='text'>Response times may vary</p>
 				</div>
 			</div>
-			<div className='xy-chart'>
-				<XYPad setCanvasSize={window.screen.width} />
-			</div>
+			{setUIScheme(uiScheme)}
 		</div>
 	);
 };

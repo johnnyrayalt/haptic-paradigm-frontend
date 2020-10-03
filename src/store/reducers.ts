@@ -1,4 +1,4 @@
-import { SLIDER } from 'resources/constants';
+import { SLIDER } from 'resources/constants/constants';
 import {
 	setSliderXValue,
 	setSliderYValue,

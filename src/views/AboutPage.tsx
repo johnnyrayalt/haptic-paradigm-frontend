@@ -4,9 +4,8 @@ import './welcomePageStyles.scss';
 import FeaturedArtist from 'components/FeaturedArtist';
 import TimeStamp from 'components/TimeStamp';
 import { IAboutPageProps } from 'interfaces/Props/IAboutPageProps';
-import { CURATORIAL_STATEMENT } from 'resources/currentProjectConstants';
 
-const AboutPage = (props: IAboutPageProps) => {
+const AboutPage = (props: { linksOn: true | false }) => {
 	const { linksOn } = props;
 
 	return (
@@ -37,10 +36,6 @@ const AboutPage = (props: IAboutPageProps) => {
 					</a>
 				</p>
 				<FeaturedArtist />
-				<p className='text-text'>
-					<TimeStamp />
-					{CURATORIAL_STATEMENT}
-				</p>
 
 				<p className='text-text'>
 					<TimeStamp />

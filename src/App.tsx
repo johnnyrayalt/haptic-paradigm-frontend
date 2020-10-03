@@ -3,7 +3,8 @@ import MainPage from 'views/MainPage';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import WelcomePage from 'views/WelcomePage';
 import AboutPage from 'views/AboutPage';
-import { IS_LIVE, LINKS_ON } from 'resources/currentProjectConstants';
+import { IS_LIVE, LINKS_ON } from 'resources/constants/currentProjectConstants';
+import { CURRENT_UI_SCHEME } from 'resources/constants/uiConstants';
 
 const App = () => {
 	return (
@@ -19,11 +20,14 @@ const App = () => {
 							<WelcomePage
 								isLive={IS_LIVE}
 								linksOn={LINKS_ON}
-								hasAdditionalInfo={true}
+								hasAdditionalInfo={false}
 							/>
 						)}
 					/>
-					<Route path='/control-room' component={MainPage} />
+					<Route
+						path='/control-room'
+						component={() => <MainPage uiScheme={CURRENT_UI_SCHEME} />}
+					/>
 					<Route path='/about' component={() => <AboutPage linksOn={LINKS_ON} />} />
 				</Switch>
 			</div>
