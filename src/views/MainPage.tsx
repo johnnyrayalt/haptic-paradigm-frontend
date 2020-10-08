@@ -9,32 +9,40 @@ import VideoPlayer from 'components/VideoPlayer';
 import XYPad from 'components/UIControls/XYPad';
 import SliderContainer from 'components/SliderContainer';
 
-const MainPage = (props: { uiScheme: string }) => {
+const MainPage = (props: { uiScheme: string[] }) => {
 	const { uiScheme } = props;
 
 	const isControlling: any = useSelector((state: any) => state.isControlling);
 
-	const setUIScheme = (scheme: string) => {
-		switch (true) {
-			case scheme === 'sliders':
-				return (
-					<div className='slider-container'>
-						<SliderContainer />
-					</div>
-				);
-			case scheme === 'xypad':
-				return (
-					<div className='xy-chart'>
-						<XYPad setCanvasSize={window.screen.width} />
-					</div>
-				);
-			default:
-				return (
-					<div>
-						<p className='text'>Please enter a UI Scheme!</p>
-					</div>
-				);
-		}
+	const setUIScheme = (schemes: string[]) => {
+		let buildComponents: any[] = [];
+
+		schemes.forEach((scheme) => {
+			switch (true) {
+				case scheme === 'sliders':
+					buildComponents.push(
+						<div className='slider-container'>
+							<SliderContainer info={false} sine={false} />
+						</div>,
+					);
+					break;
+				case scheme === 'xypad':
+					buildComponents.push(
+						<div className='xy-chart'>
+							<XYPad setCanvasSize={window.screen.width} />
+						</div>,
+					);
+					break;
+				default:
+					return (
+						<div>
+							<p className='text'>Please enter a UI Scheme!</p>
+						</div>
+					);
+			}
+		});
+
+		return buildComponents;
 	};
 
 	useEffect(() => {
