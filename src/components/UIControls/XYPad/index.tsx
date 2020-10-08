@@ -63,7 +63,7 @@ const XYPad = (props: IXYPadProps) => {
 		p5.ellipse(mouseX, mouseY, 25, 25);
 	};
 
-	const mouseMoved = (p5: p5Types): void => {
+	const trackCursorMovement = (p5: p5Types): void => {
 		if (mouseX >= 0 && mouseX <= canvasSize && mouseY >= 0 && mouseY <= canvasSize) {
 			const mapCoordX = Math.round(p5.map(mouseX, 0, canvasSize, 0, 100, true));
 			const mapCoordY = Math.round(p5.map(mouseY, 0, canvasSize, 100, 0, true));
@@ -107,7 +107,7 @@ const XYPad = (props: IXYPadProps) => {
 	};
 
 	return (
-		<div>
+		<div className='xypad-container'>
 			<XYPadInfo
 				xValue={isControlling ? xValue : xyPadValues.x}
 				yValue={isControlling ? yValue : xyPadValues.y}
@@ -116,7 +116,8 @@ const XYPad = (props: IXYPadProps) => {
 				className='canvas'
 				setup={setup}
 				draw={draw}
-				mouseMoved={mouseMoved}
+				mouseMoved={trackCursorMovement}
+				touchMoved={trackCursorMovement}
 				windowResized={resize}
 			/>
 		</div>

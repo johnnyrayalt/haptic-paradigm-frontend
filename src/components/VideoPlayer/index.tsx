@@ -48,6 +48,7 @@ const VideoPlayer = (props: IVideoPlayerProps) => {
 				allow='fullscreen'
 				allowFullScreen={false}
 				className='embedded-player'
+				style={{ width: window.screen.width - 80 }}
 			></iframe>
 		</>
 	);

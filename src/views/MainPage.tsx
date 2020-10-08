@@ -57,6 +57,14 @@ const MainPage = (props: { uiScheme: string }) => {
 						Learn more about this project
 					</Link>
 				</div>
+				<div>
+					<p className='text'>How to use this site:</p>
+					<p className='text'>Move a slider, wait for a response</p>
+					<p className='text'>Response times may vary</p>
+				</div>
+				<div>
+					<VideoPlayer videoType={'live'} />
+				</div>
 				<div className='slider-container-is-in-control'>
 					<p className='text'>
 						CURRENTLY:{' '}
@@ -71,14 +79,6 @@ const MainPage = (props: { uiScheme: string }) => {
 							<title>YOU ARE IN CONTROL</title>
 						</Helmet>
 					)}
-				</div>
-				<div>
-					<VideoPlayer videoType={'live'} />
-				</div>
-				<div>
-					<p className='text'>How to use this site:</p>
-					<p className='text'>Move a slider, wait for a response</p>
-					<p className='text'>Response times may vary</p>
 				</div>
 			</div>
 			{setUIScheme(uiScheme)}
