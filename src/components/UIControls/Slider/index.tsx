@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SLIDER_MAX, SLIDER_MIN, SLIDER_STEP } from 'resources/constants/constants';
+import { SLIDER_MAX, SLIDER_MIN, SLIDER_STEP } from 'resources/constants/uiConstants';
 import { action } from 'store';
 import { actions } from 'store/actions';
 import { useSelector } from 'react-redux';
