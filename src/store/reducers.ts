@@ -1,17 +1,27 @@
-import { SLIDER } from 'resources/constants/constants';
+import { XYPAD_NAME } from './../resources/constants/uiConstants';
+import { MESSAGE } from 'resources/constants/uiConstants';
 import {
 	setSliderXValue,
 	setSliderYValue,
 	setSliderZValue,
 	getCurrentOscMessage,
 	updateIsControlling,
+	setXYPadXValue,
+	setXYPadYValue,
 } from './actions';
 import { createReducer } from 'redux-act';
 import { combineReducers } from 'redux';
 
+const currentMessage = XYPAD_NAME;
 const initial: any = {
 	messages: {
-		message: SLIDER('x', 50),
+		message: MESSAGE('x', 50, currentMessage),
+	},
+	xyPadX: {
+		value: 50,
+	},
+	xyPadY: {
+		value: 50,
 	},
 	sliderX: {
 		value: 50,
@@ -33,6 +43,26 @@ export const isControlling = createReducer(
 		}),
 	},
 	initial.isControlling,
+);
+
+export const xyPadX = createReducer(
+	{
+		[setXYPadXValue as any]: (state: any, payload: any) => ({
+			...state,
+			value: payload.args[0].value,
+		}),
+	},
+	initial.xyPadX,
+);
+
+export const xyPadY = createReducer(
+	{
+		[setXYPadYValue as any]: (state: any, payload: any) => ({
+			...state,
+			value: payload.args[0].value,
+		}),
+	},
+	initial.xyPadY,
 );
 
 export const sliderX = createReducer(
@@ -76,6 +106,8 @@ export const currentOscMessage = createReducer(
 );
 
 export default combineReducers({
+	xyPadX,
+	xyPadY,
 	sliderX,
 	sliderY,
 	sliderZ,

@@ -20,10 +20,17 @@ function connect() {
 	});
 }
 
-function determineActionType(type) {
-	const action = actions[`UPDATE_VALUE_SLIDER_${type.toUpperCase()}`];
+function determineActionType(address, type) {
+	const action = (selector) => `UPDATE_VALUE_${selector}_`;
+	let uiSelector;
 
-	return action;
+	if (address.includes('xypad')) {
+		uiSelector = action('XYPAD');
+	} else if (address.inclide('slider')) {
+		uiSelector = action('SLIDER');
+	}
+
+	return actions[`${uiSelector}${type.toUpperCase()}`];
 }
 
 function subscribeToSocket(socket) {
@@ -35,7 +42,7 @@ function subscribeToSocket(socket) {
 			emitter(updateIsControlling(true));
 
 			payload.forEach((message) => {
-				const actionType = determineActionType(message.args[0].type);
+				const actionType = determineActionType(message.address, message.args[0].type);
 
 				const messageToUpdate = {
 					address: message.address,
@@ -46,9 +53,9 @@ function subscribeToSocket(socket) {
 			});
 		});
 
-		socket.on('initialState', async (payload) => {
-			await payload.forEach((message) => {
-				const actionType = determineActionType(message.args[0].type);
+		socket.on('initialState', async (messages) => {
+			await messages.forEach((message) => {
+				const actionType = determineActionType(message.address, message.args[0].type);
 
 				const messageToUpdate = {
 					address: message.address,
@@ -60,7 +67,7 @@ function subscribeToSocket(socket) {
 		});
 
 		socket.on('broadcastMessage', (payload) => {
-			const actionType = determineActionType(payload.args[0].type);
+			const actionType = determineActionType(payload.address, payload.args[0].type);
 
 			emitter(updateFromSocketHandler(actionType, payload));
 		});

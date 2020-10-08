@@ -1,6 +1,8 @@
 import { createAction } from 'redux-act';
 
 export const actions: { [name: string]: string } = {
+	UPDATE_VALUE_XYPAD_X: 'UPDATE_VALUE_XYPAD_X',
+	UPDATE_VALUE_XYPAD_Y: 'UPDATE_VALUE_XYPAD_Y',
 	UPDATE_VALUE_SLIDER_X: 'UPDATE_VALUE_SLIDER_X',
 	UPDATE_VALUE_SLIDER_Y: 'UPDATE_VALUE_SLIDER_Y',
 	UPDATE_VALUE_SLIDER_Z: 'UPDATE_VALUE_SLIDER_Z',
@@ -60,6 +62,14 @@ export const setSliderYValue = createAction(actions.UPDATE_VALUE_SLIDER_Y, (valu
 }));
 
 export const setSliderZValue = createAction(actions.UPDATE_VALUE_SLIDER_Z, (value: number) => ({
+	value,
+}));
+
+export const setXYPadXValue = createAction(actions.UPDATE_VALUE_XYPAD_X, (value: number) => ({
+	value,
+}));
+
+export const setXYPadYValue = createAction(actions.UPDATE_VALUE_XYPAD_Y, (value: number) => ({
 	value,
 }));
 
