@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'components/UIControls/Slider';
 import { useSelector } from 'react-redux';
-import { SLIDER, SLIDER_NAME } from 'resources/constants/constants';
+import { MESSAGE, SLIDER_NAME } from 'resources/constants/uiConstants';
 import { actions } from 'store/actions';
 import SineWave from 'components/SineWave';
 import './sliderContainerStyles.scss';
@@ -17,7 +17,7 @@ const SliderContainer = () => {
 
 	const assembleSliderOpts = (opts: { address: string; value: number }[]): OscMessage[] => {
 		const sliderOpts: OscMessage[] = [];
-		opts.forEach((opt) => sliderOpts.push(SLIDER(opt.address, opt.value)));
+		opts.forEach((opt) => sliderOpts.push(MESSAGE(opt.address, opt.value, SLIDER_NAME)));
 
 		return sliderOpts;
 	};
