@@ -5,7 +5,7 @@ const UI_SCHEMES: { [name: string]: string } = {
 	XY_PAD: 'xypad',
 	SLIDERS: 'sliders',
 };
-export const CURRENT_UI_SCHEME: string = UI_SCHEMES.XY_PAD;
+export const CURRENT_UI_SCHEME: string[] = [UI_SCHEMES.SLIDERS, UI_SCHEMES.XY_PAD];
 
 export const MESSAGE = (address: string, value: number, name: string): OscMessage => ({
 	address: `/${name}/${address}`,
@@ -35,22 +35,12 @@ export const XYPAD_DATA: {}[] = [
 // SLIDER DATA
 export const SLIDER_MIN: number = 0;
 export const SLIDER_STEP: number = 1;
-export const SLIDER_MAX: number = 100;
-export const SLIDER_NAME: string = 'cube';
+export const SLIDER_MAX: number = 5000;
+export const SLIDER_NAME: string = 'slider';
 export const SLIDER_DATA: TSliderData[] = [
 	{
 		address: 'x',
 		value: 50,
 		displayName: 'horizontal',
-	},
-	{
-		address: 'y',
-		value: 50,
-		displayName: 'vertical',
-	},
-	{
-		address: 'z',
-		value: 50,
-		displayName: 'depth',
 	},
 ];
