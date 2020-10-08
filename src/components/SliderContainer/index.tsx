@@ -8,7 +8,9 @@ import './sliderContainerStyles.scss';
 import { SLIDER_DATA } from 'resources/constants/uiConstants';
 import { OscMessage } from 'interfaces/Types/TOscMessage';
 
-const SliderContainer = () => {
+const SliderContainer = (props: { info: boolean; sine: boolean }) => {
+	const { info, sine } = props;
+
 	const sliderValues: { [name: string]: any } = {
 		x: useSelector((state: any) => state.sliderX.value),
 		y: useSelector((state: any) => state.sliderY.value),
@@ -30,14 +32,16 @@ const SliderContainer = () => {
 
 			return (
 				<div className='slider-container-inner' key={name}>
-					<SineWave
-						axis={sliderOpts.args[0].type}
-						value={
-							sliderValues[sliderOpts.args[0].type] === 0
-								? 1
-								: sliderValues[sliderOpts.args[0].type]
-						}
-					/>
+					{sine && (
+						<SineWave
+							axis={sliderOpts.args[0].type}
+							value={
+								sliderValues[sliderOpts.args[0].type] === 0
+									? 1
+									: sliderValues[sliderOpts.args[0].type]
+							}
+						/>
+					)}
 					<Slider
 						key={name}
 						opts={sliderOpts}
@@ -45,6 +49,7 @@ const SliderContainer = () => {
 						actionType={
 							actions[`UPDATE_VALUE_SLIDER_${sliderOpts.args[0].type.toUpperCase()}`]
 						}
+						info={info}
 					/>
 				</div>
 			);
