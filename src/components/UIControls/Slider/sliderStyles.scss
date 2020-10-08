@@ -17,14 +17,10 @@
 	cursor: not-allowed;
 }
 
-input[type='range'],
-.slider-data {
-	margin-left: 40px;
-}
-
 input[type='range'] {
 	z-index: 10000000;
-	width: 170px;
+	width: 100%;
+	max-width: 360px;
 	overflow: hidden;
 	-webkit-appearance: none;
 	background-color: white;
@@ -60,6 +56,6 @@ input[type='range'] {
 	}
 }
 
-.slider-data-container {
-	margin-top: -150px;
-}
+// .slider-data-container {
+// 	margin-top: -150px;
+// }

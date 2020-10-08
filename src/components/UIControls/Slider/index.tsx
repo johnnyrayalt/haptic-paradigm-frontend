@@ -8,7 +8,7 @@ import { SLIDER_DATA } from 'resources/constants/uiConstants';
 import SliderInfo from 'components/SliderInfo';
 
 const Slider = (props: any) => {
-	const { opts, value, actionType } = props;
+	const { opts, value, actionType, info } = props;
 	const { address, args } = opts;
 
 	const min: number = SLIDER_MIN;
@@ -58,7 +58,7 @@ const Slider = (props: any) => {
 
 	return (
 		<div className='slider-data-container'>
-			<SliderInfo value={value} whichSlider={whichSlider} />
+			{info && <SliderInfo value={value} whichSlider={whichSlider} />}
 			<input
 				id={address}
 				type='range'
