@@ -6,38 +6,47 @@ import { eventChannel } from 'redux-saga';
 const URL = process.env.REACT_APP_URL || 'localhost';
 const PORT = process.env.PORT || '8000';
 
+const xypad = 'xypad';
+const slider = 'slider';
+
 function connect() {
 	const socket = io(`${URL}:${PORT}`, { transports: ['websocket'] });
 	return new Promise((resolve) => {
 		socket.on('connect', () => {
-			console.log(`[CLIENT]: Attempting to connect to server over port ${PORT}`);
+			if (process.env.NODE_ENV === 'development')
+				console.log(`[CLIENT]: Attempting to connect to server over port ${PORT}`);
 			resolve(socket);
 			socket.on('connectedToServer', (message) => {
 				console.log(message);
-				console.log(`[CLIENT]: Socket connected with id: ${socket.id}`);
+				if (process.env.NODE_ENV === 'development')
+					console.log(`[CLIENT]: Socket connected with id: ${socket.id}`);
 			});
 		});
 	});
 }
 
 function determineActionType(address, type) {
-	const action = (selector) => `UPDATE_VALUE_${selector}_`;
+	const action = (selector) => `UPDATE_VALUE_${selector}_${type.toUpperCase()}`;
 	let uiSelector;
 
-	if (address.includes('xypad')) {
-		uiSelector = action('XYPAD');
-	} else if (address.includes('slider')) {
-		uiSelector = action('SLIDER');
+	switch (true) {
+		case address.includes(xypad):
+			uiSelector = action(xypad.toUpperCase());
+			break;
+		case address.includes(slider):
+			uiSelector = action(slider.toUpperCase());
+			break;
+		default:
+			return;
 	}
 
-	const a = actions[`${uiSelector}${type.toUpperCase()}`];
-	return a;
+	if (actions[uiSelector]) return uiSelector;
 }
 
 function subscribeToSocket(socket) {
 	return eventChannel((emitter) => {
 		socket.on('controlling', (payload) => {
-			console.log('im in control');
+			if (process.env.NODE_ENV === 'development') console.log('im in control');
 			socket.emit('controllerTimerStart');
 
 			emitter(updateIsControlling(true));
@@ -74,7 +83,7 @@ function subscribeToSocket(socket) {
 		});
 
 		socket.on('ping', () => {
-			console.log('pinged');
+			if (process.env.NODE_ENV === 'development') console.log('pinged');
 		});
 
 		socket.on('disconnectingClient', () => {

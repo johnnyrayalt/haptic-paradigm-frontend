@@ -6,14 +6,23 @@ const middlewares = [];
 const sagaMiddleware = createSagaMiddleware();
 middlewares.push(sagaMiddleware);
 
-if (process.env.NODE_ENV === `development`) {
-	const { createLogger } = require(`redux-logger`);
-	const logger = createLogger({
-		collapsed: (getState: any, action: any, logEntry: any) => !logEntry.error,
-	});
+const onOff = 'on';
 
-	middlewares.push(logger);
-}
+const print = (onOff: string) => {
+	if (onOff === 'on') {
+		if (process.env.NODE_ENV === `development`) {
+			const { createLogger } = require(`redux-logger`);
+			const logger = createLogger({
+				collapsed: (getState: any, action: any, logEntry: any) => !logEntry.error,
+			});
+
+			middlewares.push(logger);
+		}
+	} else {
+		return;
+	}
+};
+print(onOff);
 
 const store = createStore(reducer, applyMiddleware(...middlewares));
 sagaMiddleware.run(saga);
