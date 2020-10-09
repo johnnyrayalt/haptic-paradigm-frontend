@@ -26,7 +26,7 @@ function determineActionType(address, type) {
 
 	if (address.includes('xypad')) {
 		uiSelector = action('XYPAD');
-	} else if (address.inclide('slider')) {
+	} else if (address.includes('slider')) {
 		uiSelector = action('SLIDER');
 	}
 
