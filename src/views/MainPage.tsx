@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { action } from 'store';
 import { actions } from 'store/actions';
 import { useSelector } from 'react-redux';
@@ -8,41 +8,48 @@ import { Link } from 'react-router-dom';
 import VideoPlayer from 'components/VideoPlayer';
 import XYPad from 'components/UIControls/XYPad';
 import SliderContainer from 'components/SliderContainer';
+import { v4 as uuidv4 } from 'uuid';
 
 const MainPage = (props: { uiScheme: string[] }) => {
 	const { uiScheme } = props;
 
+	const [assembledUIScheme, assembleUIScheme] = useState([] as JSX.Element[]);
+
+	useEffect(() => {
+		setUIScheme(uiScheme);
+	}, [uiScheme]);
+
 	const isControlling: any = useSelector((state: any) => state.isControlling);
 
 	const setUIScheme = (schemes: string[]) => {
-		let buildComponents: any[] = [];
+		let buildComponents: JSX.Element[] = [];
 
 		schemes.forEach((scheme) => {
 			switch (true) {
 				case scheme === 'sliders':
 					buildComponents.push(
-						<div className='slider-container'>
+						<div key={uuidv4()} className='slider-container'>
 							<SliderContainer info={false} sine={false} />
 						</div>,
 					);
 					break;
 				case scheme === 'xypad':
 					buildComponents.push(
-						<div className='xy-chart'>
+						<div key={uuidv4()} className='xy-chart'>
 							<XYPad setCanvasSize={window.screen.width} />
 						</div>,
 					);
 					break;
 				default:
 					return (
-						<div>
+						<div key={uuidv4()}>
 							<p className='text'>Please enter a UI Scheme!</p>
 						</div>
 					);
 			}
 		});
 
-		return buildComponents;
+		assembleUIScheme(buildComponents);
 	};
 
 	useEffect(() => {
@@ -89,7 +96,7 @@ const MainPage = (props: { uiScheme: string[] }) => {
 					)}
 				</div>
 			</div>
-			{setUIScheme(uiScheme)}
+			{assembledUIScheme}
 		</div>
 	);
 };

@@ -43,8 +43,9 @@ const XYPad = (props: IXYPadProps) => {
 		setCanvasWidthAndHeight(setCanvasSize - 90);
 	}, [setCanvasSize]);
 
-	const setup = (p5: p5Types, canvasParentRef: Element): void => {
-		p5.createCanvas(canvasSize, canvasSize).parent(canvasParentRef);
+	const setup = (p5: p5Types, CanvasParentRef: Element): void => {
+		const canvas = p5.createCanvas(canvasSize, canvasSize);
+		canvas.parent(CanvasParentRef);
 	};
 
 	const draw = (p5: p5Types): void => {

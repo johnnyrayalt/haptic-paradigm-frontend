@@ -30,7 +30,8 @@ function determineActionType(address, type) {
 		uiSelector = action('SLIDER');
 	}
 
-	return actions[`${uiSelector}${type.toUpperCase()}`];
+	const a = actions[`${uiSelector}${type.toUpperCase()}`];
+	return a;
 }
 
 function subscribeToSocket(socket) {
