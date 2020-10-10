@@ -9,6 +9,7 @@ import VideoPlayer from 'components/VideoPlayer';
 import XYPad from 'components/UIControls/XYPad';
 import SliderContainer from 'components/SliderContainer';
 import { v4 as uuidv4 } from 'uuid';
+import { UI_SCHEMES } from '../resources/constants/uiConstants';
 
 const MainPage = (props: { uiScheme: string[] }) => {
 	const { uiScheme } = props;
@@ -26,14 +27,14 @@ const MainPage = (props: { uiScheme: string[] }) => {
 
 		schemes.forEach((scheme) => {
 			switch (true) {
-				case scheme === 'sliders':
+				case scheme === UI_SCHEMES.SLIDERS:
 					buildComponents.push(
 						<div key={uuidv4()} className='slider-container'>
 							<SliderContainer info={false} sine={false} />
 						</div>,
 					);
 					break;
-				case scheme === 'xypad':
+				case scheme === UI_SCHEMES.XY_PAD:
 					buildComponents.push(
 						<div key={uuidv4()} className='xy-chart'>
 							<XYPad setCanvasSize={window.screen.width} />

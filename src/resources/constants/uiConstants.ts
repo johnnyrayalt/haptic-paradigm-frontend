@@ -1,11 +1,11 @@
 import { TSliderData } from 'interfaces/Types/TSliderData';
 import { OscMessage } from 'interfaces/Types/TOscMessage';
 
-const UI_SCHEMES: { [name: string]: string } = {
+export const UI_SCHEMES: { [name: string]: string } = {
 	XY_PAD: 'xypad',
 	SLIDERS: 'sliders',
 };
-export const CURRENT_UI_SCHEME: string[] = [UI_SCHEMES.SLIDERS, UI_SCHEMES.XY_PAD];
+export const CURRENT_UI_SCHEME: string[] = [UI_SCHEMES.XY_PAD, UI_SCHEMES.SLIDERS];
 
 export const MESSAGE = (address: string, value: number, name: string): OscMessage => ({
 	address: `/${name}/${address}`,
