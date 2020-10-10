@@ -60,7 +60,7 @@
     },
     "scripts": {
         "build": "react-scripts build",
-        "build:prod": "GENERATE_SOURCEMAP=false REACT_APP_PORT=9000 REACT_APP_URL=livelyservingitup.site react-scripts build",
+        "build:prod": "GENERATE_SOURCEMAP=false REACT_APP_PORT=8000 REACT_APP_URL=livelyservingitup.site react-scripts build",
         "docker:build": "docker build -t chloealxandra/esfrontend .",
         "docker:run": "docker run -p 8080:5000 -p 8002:8002 chloealxandra/esfrontend",
         "docker": "npm run docker:build && npm run docker:run",
