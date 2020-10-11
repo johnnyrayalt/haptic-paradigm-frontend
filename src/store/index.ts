@@ -6,7 +6,7 @@ const middlewares = [];
 const sagaMiddleware = createSagaMiddleware();
 middlewares.push(sagaMiddleware);
 
-const onOff = 'off';
+const onOff = 'on';
 
 const print = (onOff: string) => {
 	if (onOff === 'on') {

@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import WelcomePage from 'views/WelcomePage';
 import AboutPage from 'views/AboutPage';
 import { IS_LIVE, LINKS_ON } from 'resources/constants/currentProjectConstants';
-import { ACCESSIBILITY_MODE, CURRENT_UI_SCHEME } from 'resources/constants/uiConstants';
+import { CURRENT_UI_SCHEME } from 'resources/constants/uiConstants';
 
 const App = () => {
 	return (

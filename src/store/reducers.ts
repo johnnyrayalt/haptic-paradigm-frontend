@@ -8,6 +8,7 @@ import {
 	updateIsControlling,
 	setXYPadXValue,
 	setXYPadYValue,
+	toggleKeyboardMode,
 } from './actions';
 import { createReducer } from 'redux-act';
 import { combineReducers } from 'redux';
@@ -31,6 +32,9 @@ const initial: any = {
 	},
 	sliderZ: {
 		value: 2500,
+	},
+	keyboardMode: {
+		value: false,
 	},
 	isControlling: false,
 };
@@ -95,6 +99,16 @@ export const sliderZ = createReducer(
 	initial.sliderZ,
 );
 
+export const keyboardMode = createReducer(
+	{
+		[toggleKeyboardMode as any]: (state: any, payload: any) => ({
+			...state,
+			value: payload,
+		}),
+	},
+	initial.keyboardMode,
+);
+
 export const currentOscMessage = createReducer(
 	{
 		[getCurrentOscMessage as any]: (state: any, payload: any) => ({
@@ -111,6 +125,7 @@ export default combineReducers({
 	sliderX,
 	sliderY,
 	sliderZ,
+	keyboardMode,
 	currentOscMessage,
 	isControlling,
 });

@@ -9,23 +9,23 @@ import VideoPlayer from 'components/VideoPlayer';
 import XYPad from 'components/UIControls/XYPad';
 import SliderContainer from 'components/SliderContainer';
 import { v4 as uuidv4 } from 'uuid';
-import { ACCESSIBILITY_MODE, SLIDER_FILTERS, UI_SCHEMES } from '../resources/constants/uiConstants';
+import { SLIDER_FILTERS, UI_SCHEMES } from '../resources/constants/uiConstants';
 
 const MainPage = (props: { uiScheme: string[] }) => {
 	const { uiScheme } = props;
 
 	const [assembledUIScheme, assembleUIScheme] = useState([] as JSX.Element[]);
-	const [accessibilityMode, updateAccessibilityMode] = useState(ACCESSIBILITY_MODE);
+	const [keyboardMode, updateKeyboardMode] = useState(false);
 
 	const isControlling: any = useSelector((state: any) => state.isControlling);
 
-	const setUIScheme = (schemes: string[], accessibilityMode: boolean) => {
+	const setUIScheme = (schemes: string[], keyboardMode: boolean) => {
 		let buildComponents: JSX.Element[] = [];
 
-		if (accessibilityMode) {
+		if (keyboardMode) {
 			buildComponents.push(
-				<div className='slider-container'>
-					<SliderContainer info={true} sine={false} opts={{ filters: SLIDER_FILTERS }} />
+				<div key={uuidv4()} className='slider-container'>
+					<SliderContainer info={true} sine={false} />
 				</div>,
 			);
 		} else {
@@ -34,7 +34,11 @@ const MainPage = (props: { uiScheme: string[] }) => {
 					case scheme === UI_SCHEMES.SLIDERS:
 						buildComponents.push(
 							<div key={uuidv4()} className='slider-container'>
-								<SliderContainer info={false} sine={false} />
+								<SliderContainer
+									info={false}
+									sine={false}
+									opts={{ filters: SLIDER_FILTERS }}
+								/>
 							</div>,
 						);
 						break;
@@ -59,8 +63,8 @@ const MainPage = (props: { uiScheme: string[] }) => {
 	};
 
 	useEffect(() => {
-		setUIScheme(uiScheme, accessibilityMode);
-	}, [uiScheme, accessibilityMode]);
+		setUIScheme(uiScheme, keyboardMode);
+	}, [uiScheme, keyboardMode]);
 
 	useEffect(() => {
 		action(actions.CONNECT_TO_SERVER);

@@ -1,7 +1,6 @@
 import { InitialSliderOpts } from './../../components/SliderContainer/index';
 import { OscMessage } from 'interfaces/Types/TOscMessage';
 
-export const ACCESSIBILITY_MODE: boolean = true;
 export const UI_SCHEMES: { [name: string]: string } = {
 	XY_PAD: 'xypad',
 	SLIDERS: 'sliders',

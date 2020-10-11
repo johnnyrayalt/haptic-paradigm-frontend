@@ -14,6 +14,7 @@ export const actions: { [name: string]: string } = {
 	SEND_MESSAGE: 'SEND_MESSAGE',
 	RECEIVE_MESSAGE: 'RECEIVE_MESSAGE',
 	IS_CONTROLLING: 'IS_CONTROLLING',
+	TOGGLE_KEYBOARD_MODE: 'TOGGLE_KEYBOARD_MODE',
 };
 
 export const updateFromUiHandler = createAction(
@@ -70,6 +71,10 @@ export const setXYPadXValue = createAction(actions.UPDATE_VALUE_XYPAD_X, (value:
 }));
 
 export const setXYPadYValue = createAction(actions.UPDATE_VALUE_XYPAD_Y, (value: number) => ({
+	value,
+}));
+
+export const toggleKeyboardMode = createAction(actions.TOGGLE_KEYBOARD_MODE, (value: boolean) => ({
 	value,
 }));
 

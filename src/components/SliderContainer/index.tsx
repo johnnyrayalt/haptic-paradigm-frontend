@@ -83,14 +83,20 @@ const SliderContainer = (props: { info: boolean; sine: boolean; opts?: { filters
 			sliderData = assembleSliderOpts(SLIDER_DATA);
 		}
 
-		return sliderData.map((sliderOpts: any) => {
-			const name: string = sliderOpts.message.address.split(`/${SLIDER_NAME}/`).pop();
+		if (sliderData === undefined) {
+			throw new Error('Oops');
+		}
+
+		return sliderData.map((sliderOpts: AssembleDSliderOpts) => {
+			const name: string = sliderOpts.message.address
+				.split(`/${SLIDER_NAME}/`)
+				.pop() as string;
 
 			return (
 				<div className='slider-container-inner' key={name}>
 					{sine && (
 						<SineWave
-							axis={sliderOpts.args[0].type}
+							axis={sliderOpts.message.args[0].type}
 							value={
 								sliderValues[sliderOpts.message.args[0].type] === 0
 									? 1
