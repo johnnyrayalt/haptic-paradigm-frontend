@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import MainPage from 'views/MainPage';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import WelcomePage from 'views/WelcomePage';

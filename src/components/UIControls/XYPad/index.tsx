@@ -44,8 +44,7 @@ const XYPad = (props: IXYPadProps) => {
 	}, [setCanvasSize]);
 
 	const setup = (p5: p5Types, CanvasParentRef: Element): void => {
-		const canvas = p5.createCanvas(canvasSize, canvasSize);
-		canvas.parent(CanvasParentRef);
+		p5.createCanvas(canvasSize, canvasSize).parent(CanvasParentRef);
 	};
 
 	const draw = (p5: p5Types): void => {
@@ -55,8 +54,11 @@ const XYPad = (props: IXYPadProps) => {
 			updateMouseXPosition(p5.mouseX);
 			updateMouseYPosition(p5.mouseY);
 		} else {
-			updateMouseXPosition(Math.round(p5.map(xValue, 0, 100, 0, canvasSize, true)));
-			updateMouseYPosition(Math.round(p5.map(yValue, 0, 100, 0, canvasSize, true)));
+			const mapCoordX = Math.round(p5.map(xyPadValues.x, 0, 100, 0, canvasSize, true));
+			const mapCoordY = Math.round(p5.map(xyPadValues.y, 100, 0, 0, canvasSize, true));
+
+			updateMouseXPosition(mapCoordX);
+			updateMouseYPosition(mapCoordY);
 		}
 
 		p5.noStroke();
@@ -117,8 +119,8 @@ const XYPad = (props: IXYPadProps) => {
 				className='canvas'
 				setup={setup}
 				draw={draw}
-				mouseMoved={trackCursorMovement}
-				touchMoved={trackCursorMovement}
+				mouseMoved={isControlling ? trackCursorMovement : () => {}}
+				touchMoved={isControlling ? trackCursorMovement : () => {}}
 				windowResized={resize}
 			/>
 		</div>
