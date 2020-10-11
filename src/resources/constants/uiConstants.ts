@@ -1,6 +1,7 @@
-import { TSliderData } from 'interfaces/Types/TSliderData';
+import { InitialSliderOpts } from './../../components/SliderContainer/index';
 import { OscMessage } from 'interfaces/Types/TOscMessage';
 
+export const ACCESSIBILITY_MODE: boolean = true;
 export const UI_SCHEMES: { [name: string]: string } = {
 	XY_PAD: 'xypad',
 	SLIDERS: 'sliders',
@@ -33,14 +34,37 @@ export const XYPAD_DATA: {}[] = [
 ];
 
 // SLIDER DATA
-export const SLIDER_MIN: number = 0;
-export const SLIDER_STEP: number = 1;
-export const SLIDER_MAX: number = 5000;
+export const SLIDER_FILTERS: string[] = ['z'];
 export const SLIDER_NAME: string = 'slider';
-export const SLIDER_DATA: TSliderData[] = [
+export const SLIDER_DATA: InitialSliderOpts[] = [
 	{
 		address: 'x',
 		value: 50,
-		displayName: 'horizontal',
+		displayName: 'left to right',
+		settings: {
+			min: 0,
+			max: 100,
+			step: 1,
+		},
+	},
+	{
+		address: 'y',
+		value: 50,
+		displayName: 'top to bottom',
+		settings: {
+			min: 0,
+			max: 100,
+			step: 1,
+		},
+	},
+	{
+		address: 'z',
+		value: 2500,
+		displayName: 'video pan',
+		settings: {
+			min: 0,
+			max: 5000,
+			step: 1,
+		},
 	},
 ];

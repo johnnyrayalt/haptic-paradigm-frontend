@@ -9,49 +9,58 @@ import VideoPlayer from 'components/VideoPlayer';
 import XYPad from 'components/UIControls/XYPad';
 import SliderContainer from 'components/SliderContainer';
 import { v4 as uuidv4 } from 'uuid';
-import { UI_SCHEMES } from '../resources/constants/uiConstants';
+import { ACCESSIBILITY_MODE, SLIDER_FILTERS, UI_SCHEMES } from '../resources/constants/uiConstants';
 
 const MainPage = (props: { uiScheme: string[] }) => {
 	const { uiScheme } = props;
 
 	const [assembledUIScheme, assembleUIScheme] = useState([] as JSX.Element[]);
-
-	useEffect(() => {
-		setUIScheme(uiScheme);
-	}, [uiScheme]);
+	const [accessibilityMode, updateAccessibilityMode] = useState(ACCESSIBILITY_MODE);
 
 	const isControlling: any = useSelector((state: any) => state.isControlling);
 
-	const setUIScheme = (schemes: string[]) => {
+	const setUIScheme = (schemes: string[], accessibilityMode: boolean) => {
 		let buildComponents: JSX.Element[] = [];
 
-		schemes.forEach((scheme) => {
-			switch (true) {
-				case scheme === UI_SCHEMES.SLIDERS:
-					buildComponents.push(
-						<div key={uuidv4()} className='slider-container'>
-							<SliderContainer info={false} sine={false} />
-						</div>,
-					);
-					break;
-				case scheme === UI_SCHEMES.XY_PAD:
-					buildComponents.push(
-						<div key={uuidv4()} className='xy-chart'>
-							<XYPad setCanvasSize={window.screen.width} />
-						</div>,
-					);
-					break;
-				default:
-					return (
-						<div key={uuidv4()}>
-							<p className='text'>Please enter a UI Scheme!</p>
-						</div>
-					);
-			}
-		});
+		if (accessibilityMode) {
+			buildComponents.push(
+				<div className='slider-container'>
+					<SliderContainer info={true} sine={false} opts={{ filters: SLIDER_FILTERS }} />
+				</div>,
+			);
+		} else {
+			schemes.forEach((scheme) => {
+				switch (true) {
+					case scheme === UI_SCHEMES.SLIDERS:
+						buildComponents.push(
+							<div key={uuidv4()} className='slider-container'>
+								<SliderContainer info={false} sine={false} />
+							</div>,
+						);
+						break;
+					case scheme === UI_SCHEMES.XY_PAD:
+						buildComponents.push(
+							<div key={uuidv4()} className='xy-chart'>
+								<XYPad setCanvasSize={window.screen.width} />
+							</div>,
+						);
+						break;
+					default:
+						return (
+							<div key={uuidv4()}>
+								<p className='text'>Please enter a UI Scheme!</p>
+							</div>
+						);
+				}
+			});
+		}
 
 		assembleUIScheme(buildComponents);
 	};
+
+	useEffect(() => {
+		setUIScheme(uiScheme, accessibilityMode);
+	}, [uiScheme, accessibilityMode]);
 
 	useEffect(() => {
 		action(actions.CONNECT_TO_SERVER);

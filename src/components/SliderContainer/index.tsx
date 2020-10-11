@@ -8,8 +8,26 @@ import './sliderContainerStyles.scss';
 import { SLIDER_DATA } from 'resources/constants/uiConstants';
 import { OscMessage } from 'interfaces/Types/TOscMessage';
 
-const SliderContainer = (props: { info: boolean; sine: boolean }) => {
-	const { info, sine } = props;
+export interface SliderSettings {
+	min: number;
+	max: number;
+	step: number;
+}
+
+export interface InitialSliderOpts {
+	address: string;
+	value: number;
+	displayName: string;
+	settings: SliderSettings;
+}
+
+export interface AssembleDSliderOpts {
+	message: OscMessage;
+	settings: SliderSettings;
+}
+
+const SliderContainer = (props: { info: boolean; sine: boolean; opts?: { filters: string[] } }) => {
+	const { info, sine, opts } = props;
 
 	const sliderValues: { [name: string]: any } = {
 		x: useSelector((state: any) => state.sliderX.value),
@@ -17,18 +35,56 @@ const SliderContainer = (props: { info: boolean; sine: boolean }) => {
 		z: useSelector((state: any) => state.sliderZ.value),
 	};
 
-	const assembleSliderOpts = (opts: { address: string; value: number }[]): OscMessage[] => {
-		const sliderOpts: OscMessage[] = [];
-		opts.forEach((opt) => sliderOpts.push(MESSAGE(opt.address, opt.value, SLIDER_NAME)));
+	const assembleSliderOpts = (opts: InitialSliderOpts[]): AssembleDSliderOpts[] => {
+		const sliderOpts: AssembleDSliderOpts[] = [];
+		opts.forEach((opt) =>
+			sliderOpts.push({
+				message: MESSAGE(opt.address, opt.value, SLIDER_NAME),
+				settings: {
+					min: opt.settings.min,
+					max: opt.settings.max,
+					step: opt.settings.step,
+				},
+			}),
+		);
 
 		return sliderOpts;
 	};
 
-	const returnSliders = (): JSX.Element[] => {
-		const sliderData = assembleSliderOpts(SLIDER_DATA);
+	const filter = (
+		filters: string[],
+		sliderData: InitialSliderOpts[],
+	): InitialSliderOpts[] | undefined => {
+		const filteredResuls: InitialSliderOpts[] = [];
 
-		return sliderData.map((sliderOpts: OscMessage) => {
-			const name = sliderOpts.address.split(`/${SLIDER_NAME}/`).pop();
+		filters.forEach((filter) => {
+			const filteredData = sliderData.find((data) => data.address === filter);
+
+			if (filteredData === undefined) {
+				console.log('Address Not Found');
+				return;
+			}
+
+			filteredResuls.push(filteredData);
+		});
+
+		return filteredResuls;
+	};
+
+	const returnSliders = (filters?: string[]): JSX.Element[] => {
+		let sliderData: AssembleDSliderOpts[];
+
+		if (filters) {
+			const filteredData = filter(filters, SLIDER_DATA);
+			sliderData = assembleSliderOpts(
+				filteredData !== undefined ? filteredData : SLIDER_DATA,
+			);
+		} else {
+			sliderData = assembleSliderOpts(SLIDER_DATA);
+		}
+
+		return sliderData.map((sliderOpts: any) => {
+			const name: string = sliderOpts.message.address.split(`/${SLIDER_NAME}/`).pop();
 
 			return (
 				<div className='slider-container-inner' key={name}>
@@ -36,18 +92,20 @@ const SliderContainer = (props: { info: boolean; sine: boolean }) => {
 						<SineWave
 							axis={sliderOpts.args[0].type}
 							value={
-								sliderValues[sliderOpts.args[0].type] === 0
+								sliderValues[sliderOpts.message.args[0].type] === 0
 									? 1
-									: sliderValues[sliderOpts.args[0].type]
+									: sliderValues[sliderOpts.message.args[0].type]
 							}
 						/>
 					)}
 					<Slider
 						key={name}
 						opts={sliderOpts}
-						value={sliderValues[sliderOpts.args[0].type]}
+						value={sliderValues[sliderOpts.message.args[0].type]}
 						actionType={
-							actions[`UPDATE_VALUE_SLIDER_${sliderOpts.args[0].type.toUpperCase()}`]
+							actions[
+								`UPDATE_VALUE_SLIDER_${sliderOpts.message.args[0].type.toUpperCase()}`
+							]
 						}
 						info={info}
 					/>
@@ -58,7 +116,7 @@ const SliderContainer = (props: { info: boolean; sine: boolean }) => {
 
 	return (
 		<div>
-			<div className='slider-container-outer'>{returnSliders()}</div>
+			<div className='slider-container-outer'>{returnSliders(opts?.filters)}</div>
 		</div>
 	);
 };

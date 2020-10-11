@@ -30,7 +30,7 @@ const initial: any = {
 		value: 50,
 	},
 	sliderZ: {
-		value: 50,
+		value: 2500,
 	},
 	isControlling: false,
 };
