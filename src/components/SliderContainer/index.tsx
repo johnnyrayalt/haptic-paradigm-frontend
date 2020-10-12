@@ -1,7 +1,7 @@
 import React from 'react';
 import Slider from 'components/UIControls/Slider';
 import { useSelector } from 'react-redux';
-import { MESSAGE, SLIDER_NAME } from 'resources/constants/uiConstants';
+import { MESSAGE } from 'resources/constants/uiConstants';
 import { actions } from 'store/actions';
 import SineWave from 'components/SineWave';
 import './sliderContainerStyles.scss';
@@ -25,14 +25,15 @@ export interface InitialSliderOpts {
 export interface AssembleDSliderOpts {
 	message: OscMessage;
 	settings: SliderSettings;
+	name: string;
 }
 
 const SliderContainer = (props: { info: boolean; sine: boolean; opts?: { filters: string[] } }) => {
 	const { info, sine, opts } = props;
 
 	const sliderValues: { [name: string]: any } = {
-		x: useSelector((state: any) => state.sliderX.value),
-		y: useSelector((state: any) => state.sliderY.value),
+		x: useSelector((state: any) => state.xyPadX.value),
+		y: useSelector((state: any) => state.xyPadY.value),
 		z: useSelector((state: any) => state.sliderZ.value),
 	};
 
@@ -46,6 +47,7 @@ const SliderContainer = (props: { info: boolean; sine: boolean; opts?: { filters
 					max: opt.settings.max,
 					step: opt.settings.step,
 				},
+				name: opt.name,
 			}),
 		);
 
@@ -90,9 +92,9 @@ const SliderContainer = (props: { info: boolean; sine: boolean; opts?: { filters
 
 		return sliderData.map((sliderOpts: AssembleDSliderOpts) => {
 			const name: string = sliderOpts.message.address
-				.split(`/${SLIDER_NAME}/`)
+				.split(`/${sliderOpts.name}/`)
 				.pop() as string;
-
+			console.log(name);
 			return (
 				<div className='slider-container-inner' key={name}>
 					{sine && (
@@ -111,7 +113,7 @@ const SliderContainer = (props: { info: boolean; sine: boolean; opts?: { filters
 						value={sliderValues[sliderOpts.message.args[0].type]}
 						actionType={
 							actions[
-								`UPDATE_VALUE_SLIDER_${sliderOpts.message.args[0].type.toUpperCase()}`
+								`UPDATE_VALUE_${sliderOpts.name.toUpperCase()}_${sliderOpts.message.args[0].type.toUpperCase()}`
 							]
 						}
 						info={info}
