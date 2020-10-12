@@ -15,6 +15,7 @@ export interface SliderSettings {
 }
 
 export interface InitialSliderOpts {
+	name: string;
 	address: string;
 	value: number;
 	displayName: string;
@@ -39,7 +40,7 @@ const SliderContainer = (props: { info: boolean; sine: boolean; opts?: { filters
 		const sliderOpts: AssembleDSliderOpts[] = [];
 		opts.forEach((opt) =>
 			sliderOpts.push({
-				message: MESSAGE(opt.address, opt.value, SLIDER_NAME),
+				message: MESSAGE(opt.address, opt.value, opt.name),
 				settings: {
 					min: opt.settings.min,
 					max: opt.settings.max,

@@ -13,7 +13,7 @@ import './xyPadStyles.scss';
 
 export interface IXYPadOpts {
 	address: string;
-	value: 50;
+	value: number;
 }
 
 const XYPad = (props: IXYPadProps) => {

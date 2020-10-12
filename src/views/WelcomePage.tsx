@@ -6,37 +6,14 @@ import TimeStamp from 'components/TimeStamp';
 import Headline from 'components/Headline';
 import { IWelcomePageProps } from 'interfaces/Props/IWelcomePageProps';
 import { VIDEO } from 'resources/constants/currentProjectConstants';
-import Dropdown from 'components/Dropdown';
-import { action } from 'store';
-import { actions } from 'store/actions';
 
 const WelcomePage = (props: IWelcomePageProps) => {
-	const { isLive, linksOn, hasAdditionalInfo } = props;
+	const { isLive, linksOn, hasAdditionalInfo, keyboardMode } = props;
 	const VIDEO_TYPE = VIDEO;
-
-	const updateDropdownValueCB = (e: any) => {
-		let value: boolean;
-		if (e.target.value === 'Enabled') {
-			value = true;
-		} else {
-			value = false;
-		}
-		console.log(value);
-		action(actions.TOGGLE_KAYBORD_MODE, value);
-	};
 
 	return (
 		<div className='text-page'>
-			<div className='keyboard-mode-dropdown-container'>
-				{/* <Dropdown
-					title={'---Keyboard Only Mode---'}
-					description={
-						'Enable or disable keyboard only mode for site accessibility without a mouse'
-					}
-					options={['Enabled', 'Disabled']}
-					callback={updateDropdownValueCB}
-				/> */}
-			</div>
+			{keyboardMode}
 			<h1 className='text-header'>welcome</h1>
 			<div className='text-text-container'>
 				<p className='text-text'>

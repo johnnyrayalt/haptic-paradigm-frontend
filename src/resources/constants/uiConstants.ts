@@ -21,14 +21,16 @@ export const MESSAGE = (address: string, value: number, name: string): OscMessag
 export const XYPAD_NAME: string = 'xypad';
 export const XYPAD_DATA: {}[] = [
 	{
+		name: XYPAD_NAME,
 		address: 'x',
 		value: 50,
-		displayName: 'X',
+		displayName: 'pitch',
 	},
 	{
+		name: XYPAD_NAME,
 		address: 'y',
 		value: 50,
-		displayName: 'Y',
+		displayName: 'yaw',
 	},
 ];
 
@@ -37,6 +39,7 @@ export const SLIDER_FILTERS: string[] = ['z'];
 export const SLIDER_NAME: string = 'slider';
 export const SLIDER_DATA: InitialSliderOpts[] = [
 	{
+		name: XYPAD_NAME,
 		address: 'x',
 		value: 50,
 		displayName: 'left to right',
@@ -47,9 +50,10 @@ export const SLIDER_DATA: InitialSliderOpts[] = [
 		},
 	},
 	{
+		name: XYPAD_NAME,
 		address: 'y',
 		value: 50,
-		displayName: 'top to bottom',
+		displayName: 'bottom to top',
 		settings: {
 			min: 0,
 			max: 100,
@@ -57,6 +61,7 @@ export const SLIDER_DATA: InitialSliderOpts[] = [
 		},
 	},
 	{
+		name: SLIDER_NAME,
 		address: 'z',
 		value: 2500,
 		displayName: 'video pan',

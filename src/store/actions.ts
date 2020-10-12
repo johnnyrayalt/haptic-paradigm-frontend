@@ -48,6 +48,13 @@ export const updateIsControlling = createAction(
 	}),
 );
 
+export const toggleKeyboardMode = createAction(
+	actions.TOGGLE_KEYBOARD_MODE,
+	(keyboardMode: boolean) => ({
+		keyboardMode,
+	}),
+);
+
 export const connectToServer = createAction(actions.CONNECT_TO_SERVER);
 
 export const disconnectFromServer = createAction(actions.DISCONNECT_FROM_SERVER, (message) => ({
@@ -71,10 +78,6 @@ export const setXYPadXValue = createAction(actions.UPDATE_VALUE_XYPAD_X, (value:
 }));
 
 export const setXYPadYValue = createAction(actions.UPDATE_VALUE_XYPAD_Y, (value: number) => ({
-	value,
-}));
-
-export const toggleKeyboardMode = createAction(actions.TOGGLE_KEYBOARD_MODE, (value: boolean) => ({
 	value,
 }));
 

@@ -1,43 +1,41 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 const Dropdown = (props: {
 	title: string;
 	description: string;
-	options: string[];
+	options: { text: string; value: any }[];
 	callback: (e: any) => void;
 }) => {
 	const { title, description, options, callback } = props;
 
-	const [assembledOptions, setAssembledOptions] = useState([] as JSX.Element[]);
+	const state = useSelector((state: any) => state.keyboardMode.value);
 
-	const assembleOptions = useCallback((): void => {
+	const assembleOptions = (options: { text: string; value: any }[]) => {
 		const optionsArray: JSX.Element[] = [];
-		options.map((opt: string) =>
+		options.map((opt) => {
 			optionsArray.push(
-				<option key={opt} className='dropdown-option selectable' value={opt}>
-					{opt}
+				<option key={opt.text} className='dropdown-option selectable' value={opt.value}>
+					{opt.text}
 				</option>,
-			),
-		);
-		setAssembledOptions(optionsArray);
-	}, [options]);
+			);
 
-	useEffect(() => {
-		assembleOptions();
-	}, [assembleOptions]);
+			return optionsArray;
+		});
+		return optionsArray;
+	};
 
 	return (
 		<div className='dropdown-container'>
-			<select className='dropdown-select' onChange={(e) => callback(e)}>
-				<option
-					className='dropdown-option title'
-					value={description}
-					selected={true}
-					disabled={true}
-				>
+			<select
+				value={state === '' ? description : state}
+				className='dropdown-select'
+				onChange={(e) => callback(e.target.value)}
+			>
+				<option className='dropdown-option title' value={description} disabled={true}>
 					{title}
 				</option>
-				{assembledOptions}
+				{assembleOptions(options)}
 			</select>
 		</div>
 	);

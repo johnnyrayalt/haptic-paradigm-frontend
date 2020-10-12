@@ -138,7 +138,10 @@ function* updateOscValue(payload) {
 function* updateFromUiListener() {
 	while (true) {
 		const response = yield take(actions.UPDATE_FROM_UI);
-		yield call(updateOscValue, response.payload);
+		if (response.payload.address) {
+			yield call(updateOscValue, response.payload);
+		}
+
 		yield put({ type: response.actionType, payload: response.payload });
 	}
 }

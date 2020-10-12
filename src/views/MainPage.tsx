@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { action } from 'store';
 import { actions } from 'store/actions';
 import { useSelector } from 'react-redux';
@@ -11,25 +11,38 @@ import SliderContainer from 'components/SliderContainer';
 import { v4 as uuidv4 } from 'uuid';
 import { SLIDER_FILTERS, UI_SCHEMES } from '../resources/constants/uiConstants';
 
-const MainPage = (props: { uiScheme: string[] }) => {
-	const { uiScheme } = props;
-
-	const [assembledUIScheme, assembleUIScheme] = useState([] as JSX.Element[]);
-	const [keyboardMode, updateKeyboardMode] = useState(false);
+const MainPage = (props: {
+	uiScheme: string[];
+	keyboardMode: any;
+	keyboardModeEnabled: boolean;
+}) => {
+	const { uiScheme, keyboardMode } = props;
 
 	const isControlling: any = useSelector((state: any) => state.isControlling);
 
-	const setUIScheme = (schemes: string[], keyboardMode: boolean) => {
-		let buildComponents: JSX.Element[] = [];
+	const [assembledUIScheme, assembleUIScheme] = useState([] as JSX.Element[]);
 
-		if (keyboardMode) {
+	const setUIScheme = useCallback(() => {
+		let buildComponents: JSX.Element[] = [];
+		const keyboardModeEnabled = window.localStorage.getItem('keyboardMode');
+
+		if (keyboardModeEnabled === 'true') {
 			buildComponents.push(
 				<div key={uuidv4()} className='slider-container'>
 					<SliderContainer info={true} sine={false} />
 				</div>,
 			);
 		} else {
-			schemes.forEach((scheme) => {
+			if (keyboardModeEnabled === 'false') {
+				action(actions.UPDATE_FROM_UI, {
+					actionType: actions.TOGGLE_KEYBOARD_MODE,
+					payload: '',
+				});
+				window.localStorage.setItem('keyboardMode', '');
+				window.location.reload();
+			}
+
+			uiScheme.forEach((scheme) => {
 				switch (true) {
 					case scheme === UI_SCHEMES.SLIDERS:
 						buildComponents.push(
@@ -60,11 +73,11 @@ const MainPage = (props: { uiScheme: string[] }) => {
 		}
 
 		assembleUIScheme(buildComponents);
-	};
+	}, [uiScheme]);
 
 	useEffect(() => {
-		setUIScheme(uiScheme, keyboardMode);
-	}, [uiScheme, keyboardMode]);
+		setUIScheme();
+	}, [setUIScheme]);
 
 	useEffect(() => {
 		action(actions.CONNECT_TO_SERVER);
@@ -76,7 +89,7 @@ const MainPage = (props: { uiScheme: string[] }) => {
 			<div className='border-r'></div>
 			<div className='border-b'></div>
 			<div className='border-l'></div>
-
+			{keyboardMode}
 			<div className='text-container'>
 				<div className='slider-container-header'>
 					<h4>HAPTIC PARADIGM</h4>

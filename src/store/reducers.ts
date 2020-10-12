@@ -34,7 +34,7 @@ const initial: any = {
 		value: 2500,
 	},
 	keyboardMode: {
-		value: false,
+		value: '',
 	},
 	isControlling: false,
 };
@@ -47,6 +47,16 @@ export const isControlling = createReducer(
 		}),
 	},
 	initial.isControlling,
+);
+
+export const keyboardMode: any = createReducer(
+	{
+		[toggleKeyboardMode as any]: (state: any, payload: any) => ({
+			...state,
+			value: payload,
+		}),
+	},
+	initial.keyboardMode,
 );
 
 export const xyPadX = createReducer(
@@ -97,16 +107,6 @@ export const sliderZ = createReducer(
 		}),
 	},
 	initial.sliderZ,
-);
-
-export const keyboardMode = createReducer(
-	{
-		[toggleKeyboardMode as any]: (state: any, payload: any) => ({
-			...state,
-			value: payload,
-		}),
-	},
-	initial.keyboardMode,
 );
 
 export const currentOscMessage = createReducer(

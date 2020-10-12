@@ -1,0 +1,21 @@
+.keyboard-mode-dropdown-container {
+	z-index: 10000000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+
+	.dropdown-container {
+		height: 13px;
+		margin-top: -2px;
+
+		.dropdown-select {
+			height: 13px;
+			font-size: 10px;
+			background-color: black;
+			color: white;
+			border: 1px solid #2727e6;
+		}
+	}
+}

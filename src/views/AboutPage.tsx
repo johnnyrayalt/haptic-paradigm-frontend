@@ -6,10 +6,11 @@ import TimeStamp from 'components/TimeStamp';
 import { IAboutPageProps } from 'interfaces/Props/IAboutPageProps';
 
 const AboutPage = (props: IAboutPageProps) => {
-	const { linksOn } = props;
+	const { linksOn, keyboardMode } = props;
 
 	return (
 		<div className='text-page'>
+			{keyboardMode}
 			<h1 className='text-header'>about</h1>
 			<div className='text-text-container'>
 				<p>
