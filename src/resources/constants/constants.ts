@@ -12,8 +12,10 @@ export const TWITCH_VIDEO_ID: string = '?video=732720305';
 
 // const setDate = (hours: number) => {
 // 	const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-// 	return moment(`2020-09-13T${hours}:00:00Z`).tz(timezone).format('LT');
+// 	const westCoastTZ = moment.tz(`2020-10-13 ${hours}:00:00Z`, 'America/Los_Angeles');
+// 	const localTime = westCoastTZ.clone().tz('America/New_York').format('LT');
+// 	return localTime;
 // };
 
 export const EXHIBITION_INFO = (): string =>
-	`The next public viewing will be ${EXHIBITION_DATE} featuring visuals from ${FEATURED_ARTIST_NAME}`;
+	`The next public viewing will be ${EXHIBITION_DATE} from 7pm to 9pm EST featuring visuals from ${FEATURED_ARTIST_NAME}`;
