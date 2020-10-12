@@ -7,7 +7,7 @@ import { SLIDER_DATA } from 'resources/constants/uiConstants';
 import SliderInfo from 'components/SliderInfo';
 
 const Slider = (props: any) => {
-	const { opts, value, actionType, info } = props;
+	const { opts, value, actionType, info, screenReaderMode } = props;
 	const { message, settings } = opts;
 
 	const min: number = settings.min;
@@ -59,6 +59,7 @@ const Slider = (props: any) => {
 		<div className='slider-data-container'>
 			{info && <SliderInfo value={value} whichSlider={whichSlider} />}
 			<input
+				className={`${screenReaderMode ? 'sr-mode' : ''}`}
 				id={message.address}
 				type='range'
 				min={min}

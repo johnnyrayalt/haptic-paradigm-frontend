@@ -40,7 +40,7 @@ const VideoPlayer = (props: IVideoPlayerProps) => {
 		`https://player.twitch.tv/${source}${parent}&muted=false`;
 
 	return (
-		<>
+		<div className='video-player-container'>
 			<iframe
 				title='player'
 				src={selectUrl(videoType)}
@@ -50,7 +50,8 @@ const VideoPlayer = (props: IVideoPlayerProps) => {
 				className='embedded-player'
 				style={{ width: window.screen.width - 80 }}
 			></iframe>
-		</>
+			<div className='sr-only' aria-label={`The above is a video of x`}></div>
+		</div>
 	);
 };
 

@@ -28,7 +28,11 @@ export interface AssembleDSliderOpts {
 	name: string;
 }
 
-const SliderContainer = (props: { info: boolean; sine: boolean; opts?: { filters: string[] } }) => {
+const SliderContainer = (props: {
+	info: boolean;
+	sine: boolean;
+	opts: { screenReaderMode: boolean; filters?: string[] };
+}) => {
 	const { info, sine, opts } = props;
 
 	const sliderValues: { [name: string]: any } = {
@@ -94,7 +98,7 @@ const SliderContainer = (props: { info: boolean; sine: boolean; opts?: { filters
 			const name: string = sliderOpts.message.address
 				.split(`/${sliderOpts.name}/`)
 				.pop() as string;
-			console.log(name);
+
 			return (
 				<div className='slider-container-inner' key={name}>
 					{sine && (
@@ -117,6 +121,7 @@ const SliderContainer = (props: { info: boolean; sine: boolean; opts?: { filters
 							]
 						}
 						info={info}
+						screenReaderMode={opts.screenReaderMode}
 					/>
 				</div>
 			);

@@ -29,7 +29,7 @@ const MainPage = (props: {
 		if (keyboardModeEnabled === 'true') {
 			buildComponents.push(
 				<div key={uuidv4()} className='slider-container'>
-					<SliderContainer info={true} sine={false} />
+					<SliderContainer info={true} sine={false} opts={{ screenReaderMode: true }} />
 				</div>,
 			);
 		} else {
@@ -50,7 +50,7 @@ const MainPage = (props: {
 								<SliderContainer
 									info={false}
 									sine={false}
-									opts={{ filters: SLIDER_FILTERS }}
+									opts={{ screenReaderMode: false, filters: SLIDER_FILTERS }}
 								/>
 							</div>,
 						);
@@ -89,6 +89,10 @@ const MainPage = (props: {
 			<div className='border-r'></div>
 			<div className='border-b'></div>
 			<div className='border-l'></div>
+			<div
+				className='sr-only'
+				aria-label={`The sonic and visual experiences are related to each other, if you are not able to access one element you are not missing a vital component or any written or spoken directions. The visual experience is comprised of abstract, interactive loops with fluid imagery based around reflection, feedback and the movement of data in and around screens. The visuals range from bright, low contrast imagery of abstracted high-speed newsfeeds and analog static, to dark, slow, undulating internal dreamscapes of the same data re-imagined through machine-learning algorithms. The sonic experience is a shifting 4 part composition inspired by water’s movement includes musique concrete made with field recordings of breath, ocean waves, rain and voice without the use of legible words, portions also include AM, FM and other forms of synthesis.`}
+			></div>
 			{keyboardMode}
 			<div className='text-container'>
 				<div className='slider-container-header'>
@@ -101,12 +105,11 @@ const MainPage = (props: {
 				</div>
 				<div>
 					<p className='text'>How to use this site:</p>
-					<p className='text'>Move a slider, wait for a response</p>
+					<p className='text'>Interact with the controls,</p>
+					<p className='text'>wait for a response.</p>
 					<p className='text'>Response times may vary</p>
 				</div>
-				<div>
-					<VideoPlayer videoType={'live'} />
-				</div>
+				<VideoPlayer videoType={'live'} />
 				<div className='slider-container-is-in-control'>
 					<p className='text'>
 						CURRENTLY:{' '}

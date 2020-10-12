@@ -19,12 +19,12 @@
 
 input[type='range'] {
 	z-index: 10000000;
+	outline: none;
 	width: 100%;
 	max-width: 360px;
 	overflow: hidden;
 	-webkit-appearance: none;
 	background-color: white;
-	outline: none;
 	border-radius: 1em;
 	display: block;
 	position: relative;
@@ -51,11 +51,9 @@ input[type='range'] {
 	&:disabled::-moz-range-thumb {
 		@include thumb-disabled;
 	}
-	:focus {
-		outline: none;
+}
+.sr-mode {
+	&:focus {
+		box-shadow: 0 0 0 3pt #0042ff;
 	}
 }
-
-// .slider-data-container {
-// 	margin-top: -150px;
-// }

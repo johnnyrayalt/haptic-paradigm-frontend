@@ -4,7 +4,7 @@ import moment from 'moment';
 const TimeStamp = () => {
 	return (
 		<>
-			<span>
+			<span aria-hidden='true'>
 				{moment().format('L HH:mm')} :\{'>'}
 			</span>{' '}
 		</>
