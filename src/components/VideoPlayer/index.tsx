@@ -37,7 +37,7 @@ const VideoPlayer = (props: IVideoPlayerProps) => {
 	};
 
 	const assembleUrl = (source: string, parent: string): string =>
-		`https://player.twitch.tv/${source}${parent}&muted=false`;
+		`https://player.twitch.tv/${source}${parent}`;
 
 	return (
 		<div className='video-player-container'>
@@ -45,12 +45,15 @@ const VideoPlayer = (props: IVideoPlayerProps) => {
 				title='player'
 				src={selectUrl(videoType)}
 				frameBorder='0'
-				allow='fullscreen'
+				allow='autoplay'
 				allowFullScreen={false}
 				className='embedded-player'
 				style={{ width: window.screen.width - 80 }}
 			></iframe>
-			<div className='sr-only' aria-label={`The above is a video of x`}></div>
+			<div
+				className='sr-only'
+				aria-label={`The visual experience is comprised of abstract, interactive loops with fluid imagery based around reflection, feedback and the movement of data in and around screens. The visuals range from bright, low contrast abstractions of high-speed newsfeeds and analog static, to dark, slow, undulating internal dreamscapes of the same data re-imagined through machine-learning algorithms. `}
+			></div>
 		</div>
 	);
 };
