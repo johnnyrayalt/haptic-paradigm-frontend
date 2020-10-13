@@ -18,4 +18,4 @@ export const TWITCH_VIDEO_ID: string = '?video=732720305';
 // };
 
 export const EXHIBITION_INFO = (): string =>
-	`The next public interaction will be ${EXHIBITION_DATE}, from 7pm to 9pm ADT featuring visuals from ${FEATURED_ARTIST_NAME}, and sound by Chloe Alexandra Thompson (6pm - 9pm EDT, 3-6 PDT).`;
+	`The next public interaction will be ${EXHIBITION_DATE}, from 7pm to 9pm ADT featuring visuals from ${FEATURED_ARTIST_NAME}, and sound by Chloe Alexandra Thompson (6pm to 9pm EDT, 3pm to 6pm PDT).`;

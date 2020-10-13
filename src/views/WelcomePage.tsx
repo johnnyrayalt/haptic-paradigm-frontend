@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './welcomePageStyles.scss';
 import VideoPlayer from 'components/VideoPlayer';
@@ -28,11 +28,27 @@ const WelcomePage = (props: IWelcomePageProps) => {
 				</p>
 				<Headline isLive={isLive} hasAdditionalInfo={hasAdditionalInfo} />
 
-				<div>
+				<div className='video-player-wrapper'>
 					<TimeStamp />
 					<VideoPlayer videoType={VIDEO_TYPE} />
+					<p className='text-text'>
+						<TimeStamp />
+						<span aria-label='Click below for an accessible audio description of the visual content.'>
+							Click below for an accessible audio description of the visual content.
+						</span>
+					</p>
+					<iframe
+						title='audioDescription'
+						width='100%'
+						height='20'
+						scrolling='no'
+						frameBorder='no'
+						src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/909914764%3Fsecret_token%3Ds-e5iQ2I4Rpz0&color=%23ff5500&inverse=false&auto_play=false&show_user=true'
+					></iframe>
 				</div>
+
 				<TextBlock json={textData} />
+
 				<Link className={`text-link ${linksOn ? 'on' : 'off'}`} to='/control-room'>
 					<TimeStamp />
 					<span aria-label='Link to the main page to interact with the project'>

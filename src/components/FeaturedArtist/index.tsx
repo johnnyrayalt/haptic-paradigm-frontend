@@ -16,12 +16,14 @@ const FeaturedArtist = () => {
 		<div>
 			<p className='text-text'>
 				<TimeStamp />
-				Featured Artist: {FEATURED_ARTIST_NAME}
+				<span aria-label={`Featured Artist: ${FEATURED_ARTIST_NAME}`}>
+					Featured Artist: {FEATURED_ARTIST_NAME}
+				</span>
 			</p>
 			<p className='text-text'>
 				<TimeStamp />
-				{FEATURED_ARTIST_BIO}{' '}
-				<span>
+				<span aria-label={`${FEATURED_ARTIST_BIO}`}>{FEATURED_ARTIST_BIO} </span>
+				<span aria-label='External link to the featured artists website'>
 					<a
 						className='text-link'
 						href={FEATURED_ARTIST_LINK}

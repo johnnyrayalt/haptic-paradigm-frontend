@@ -10,6 +10,7 @@ import XYPad from 'components/UIControls/XYPad';
 import SliderContainer from 'components/SliderContainer';
 import { v4 as uuidv4 } from 'uuid';
 import { SLIDER_FILTERS, UI_SCHEMES } from '../resources/constants/uiConstants';
+import { TURN_OFF_PAGE } from 'resources/constants/currentProjectConstants';
 
 const MainPage = (props: {
 	uiScheme: string[];
@@ -94,29 +95,30 @@ const MainPage = (props: {
 				aria-label={`The sonic and visual experiences are related to each other, if you are not able to access one element you are not missing a vital component or any written or spoken directions. The visual experience is comprised of abstract, interactive loops with fluid imagery based around reflection, feedback and the movement of data in and around screens. The visuals range from bright, low contrast imagery of abstracted high-speed newsfeeds and analog static, to dark, slow, undulating internal dreamscapes of the same data re-imagined through machine-learning algorithms. The sonic experience is a shifting 4 part composition inspired by water’s movement includes musique concrete made with field recordings of breath, ocean waves, rain and voice without the use of legible words, portions also include AM, FM and other forms of synthesis.`}
 			></div>
 			{keyboardMode}
-			<div className='text-container'>
+            {TURN_OFF_PAGE ? (<p aria-label='The project is not live, please check back for the next showing'>The project is not live, please check back for the next showing</p>) : (
+            <div><div className='text-container'>
 				<div className='slider-container-header'>
-					<h4>HAPTIC PARADIGM</h4>
+					<h4 aria-label='HAPTIC PARADIGM'>HAPTIC PARADIGM</h4>
 				</div>
 				<div>
 					<Link className='text-link' to='/about'>
-						Learn more about this project
+					<span aria-label='Internal Link to the about page'>Learn more about this project</span>
 					</Link>
 				</div>
 				<div>
-					<p className='text'>How to use this site:</p>
-					<p className='text'>Interact with the controls,</p>
-					<p className='text'>wait for a response.</p>
-					<p className='text'>Response times may vary</p>
+					<p aria-label='How to use this site:' className='text'>How to use this site:</p>
+					<p aria-label='Interact with the controls,' className='text'>Interact with the controls,</p>
+					<p aria-label='wait for a response.' className='text'>wait for a response.</p>
+					<p aria-label='Response times may vary.' className='text'>Response times may vary.</p>
 				</div>
 				<VideoPlayer videoType={'live'} />
 				<div className='slider-container-is-in-control'>
 					<p className='text'>
 						CURRENTLY:{' '}
 						{isControlling ? (
-							<span className='important-text'>controlling</span>
+							<span aria-label='You are currently in control of the site. You may now interact with the controls.' className='important-text'>controlling</span>
 						) : (
-							'watching'
+							<span aria-label='You are currently in watching mode, please wait until control shifts to you to interact with the interface.'>watching</span>
 						)}
 					</p>
 					{isControlling && (
@@ -127,6 +129,10 @@ const MainPage = (props: {
 				</div>
 			</div>
 			{assembledUIScheme}
+            </div>
+            )
+        }
+			
 		</div>
 	);
 };
