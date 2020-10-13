@@ -12,20 +12,26 @@ const Headline = (props: IHeadLineProps) => {
 		<>
 			{isLive ? (
 				<span>
-					<p className='text-text important-text'>
+					<p
+						className='text-text important-text'
+						aria-label={`Featuring visuals by ${FEATURED_ARTIST_NAME}, sound by Chloe Alexandra Thompson, and web tools by Johnny Ray Alt.`}
+					>
 						<TimeStamp />
 						Featuring visuals by {FEATURED_ARTIST_NAME}, sound by Chloe Alexandra
-						Thompson
+						Thompson, and web tools by Johnny Ray Alt.
 					</p>
+
 					<Link className='text-link' to='/control-room'>
 						<TimeStamp />
-						The gallery is currently open. Come on in, the water's fine.
+						<span aria-label='Link to the main page to interact with the project'>
+							The gallery is currently open. Come on in, the water's fine.
+						</span>
 					</Link>
 				</span>
 			) : (
 				<p className='text-text important-text'>
 					<TimeStamp />
-					{EXHIBITION_INFO()}
+					<span aria-label={EXHIBITION_INFO()}>{EXHIBITION_INFO()}</span>
 				</p>
 			)}
 		</>
