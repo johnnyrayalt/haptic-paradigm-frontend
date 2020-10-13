@@ -22,10 +22,10 @@ const Headline = (props: IHeadLineProps) => {
 					</p>
 
 					<Link className='text-link' to='/control-room'>
-						<TimeStamp />
-						<span aria-label='Link to the main page to interact with the project'>
+						<p aria-label='Link to the main page to interact with the project'>
+						    <TimeStamp />
 							The gallery is currently open. Come on in, the water's fine.
-						</span>
+						</p>
 					</Link>
 				</span>
 			) : (
