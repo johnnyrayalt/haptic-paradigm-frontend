@@ -6,9 +6,9 @@ export const ADDITIONAL_EXHIBITION_INFO: string = '';
 
 export const EXHIBITION_DATE: string = 'October 13, 2020';
 
-export const TURN_OFF_PAGE: boolean = false;
-export const LINKS_ON: boolean = true;
-export const IS_LIVE: boolean = true;
+export const TURN_OFF_PAGE: boolean = true;
+export const LINKS_ON: boolean = false;
+export const IS_LIVE: boolean = false;
 export const HAS_ADDITIONAL_INFO: boolean = false;
 
 export const VIDEO: 'past' | 'live' = 'past';

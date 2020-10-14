@@ -8,7 +8,7 @@ export const HOSTED_VIDEO_PARENT: string =
 	'&parent=haptic-paradigm.com&parent=www.haptic-paradigm.com';
 
 export const TWITCH_CHANNEL_ID: string = '?channel=tealportals';
-export const TWITCH_VIDEO_ID: string = '?video=732720305';
+export const TWITCH_VIDEO_ID: string = '?video=769731532';
 
 // const setDate = (hours: number) => {
 // 	const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
