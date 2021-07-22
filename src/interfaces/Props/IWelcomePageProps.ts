@@ -1,6 +1,8 @@
+import { TIsLive } from 'interfaces/Types/TIsLive';
+import { TLinksOn } from 'interfaces/Types/TLinksOn';
+
 export interface IWelcomePageProps {
-	isLive: boolean;
-	linksOn: boolean;
+	isLive: TIsLive;
+	linksOn: TLinksOn;
 	hasAdditionalInfo: boolean;
-	keyboardMode: any;
 }

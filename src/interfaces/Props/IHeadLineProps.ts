@@ -1,4 +1,6 @@
+import { TIsLive } from '../Types/TIsLive';
+
 export interface IHeadLineProps {
-	isLive: boolean;
+	isLive: TIsLive;
 	hasAdditionalInfo: boolean;
 }

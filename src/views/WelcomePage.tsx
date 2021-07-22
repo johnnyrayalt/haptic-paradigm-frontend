@@ -3,57 +3,56 @@ import { Link } from 'react-router-dom';
 import './welcomePageStyles.scss';
 import VideoPlayer from 'components/VideoPlayer';
 import TimeStamp from 'components/TimeStamp';
-import Headline from 'components/Headline';
-import TextBlock from 'components/TextBlock';
+import Headline from 'components/Headline/Headline';
 import { IWelcomePageProps } from 'interfaces/Props/IWelcomePageProps';
-import { VIDEO } from 'resources/constants/currentProjectConstants';
-import textData from '../resources/text/welcomeText.json';
 
 const WelcomePage = (props: IWelcomePageProps) => {
-	const { isLive, linksOn, hasAdditionalInfo, keyboardMode } = props;
-	const VIDEO_TYPE = VIDEO;
+	const { isLive, linksOn, hasAdditionalInfo } = props;
+	const VIDEO_TYPE = 'past';
 
 	return (
 		<div className='text-page'>
-			{keyboardMode}
 			<h1 className='text-header'>welcome</h1>
 			<div className='text-text-container'>
 				<p className='text-text'>
 					<Link className='text-link' to='/about'>
 						<TimeStamp />
-						<span aria-label='Learn more about this project<'>
-							Learn more about this project
-						</span>
+						Learn more about this project
 					</Link>
 				</p>
-				<Headline isLive={isLive} hasAdditionalInfo={hasAdditionalInfo} />
-
-				<div className='video-player-wrapper'>
+				<p className='text-text important-text'>
+					<Headline isLive={isLive} hasAdditionalInfo={hasAdditionalInfo} />
+				</p>
+				<div>
 					<TimeStamp />
 					<VideoPlayer videoType={VIDEO_TYPE} />
-					<p className='text-text'>
-						<TimeStamp />
-						<span aria-label='Click below for an accessible audio description of the visual content.'>
-							Click below for an accessible audio description of the visual content.
-						</span>
-					</p>
-					<iframe
-						title='audioDescription'
-						width='100%'
-						height='20'
-						scrolling='no'
-						frameBorder='no'
-						src='https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/909914764%3Fsecret_token%3Ds-e5iQ2I4Rpz0&color=%23ff5500&inverse=false&auto_play=false&show_user=true'
-					></iframe>
 				</div>
 
-				<TextBlock json={textData} />
-
+				<p className='text-text'>
+					<TimeStamp />
+					Haptic Paradigm is an interactive installation conceptualized by Chloe Alexandra
+					Thompson with web tools by Johnny Ray Alt. The project explores the ways we
+					remain in relationship to one another, despite being in isolation and outside of
+					immediate view.
+				</p>
+				<p className='text-text'>
+					<TimeStamp />
+					Guests may take short turns interacting with the piece for a 5 hour window. When
+					you arrive in the space, you’ll find some sliders that you can use to manipulate
+					the composition. You will see them moving but will not be able to interact until
+					it’s your turn. Sliders are marked but what you are controlling will shift over
+					time.
+				</p>
+				<p className='text-text'>
+					<TimeStamp />
+					To hear the results of the interactions, hit play on the embedded livestream on
+					the webpage. If someone is ahead of you in the queue, you’re encouraged to wait
+					and listen. Once the controls are yours, you’ll be able to manipulate the sonic
+					and visual fields.
+				</p>
 				<Link className={`text-link ${linksOn ? 'on' : 'off'}`} to='/control-room'>
 					<TimeStamp />
-					<span aria-label='Link to the main page to interact with the project'>
-						Take me to the control room_
-					</span>
+					Take me to the control room_
 				</Link>
 			</div>
 		</div>

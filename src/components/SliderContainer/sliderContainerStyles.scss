@@ -3,14 +3,14 @@
 
 	.slider-container-inner {
 		width: 100%;
-		// height: 210px;
-		padding: 20px 0 10px 0;
+		height: 210px;
+		padding: 0;
 		margin: 0;
 
-		// &:last-of-type {
-		// 	input {
-		// 		margin-bottom: 40px;
-		// 	}
-		// }
+		&:last-of-type {
+			input {
+				margin-bottom: 40px;
+			}
+		}
 	}
 }
